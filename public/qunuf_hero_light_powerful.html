@@ -1,0 +1,454 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#B8860B;--gold2:#D4A017;--gold3:#F0C040;--goldLight:#FFF3CD;
+  --dark:#1a1206;--cream:#FEFCF7;--sand:#F5EDD6;--muted:#8B7355;
+}
+body{background:var(--cream);font-family:'DM Sans',sans-serif;overflow:hidden}
+#hero{position:relative;width:100%;height:600px;overflow:hidden;background:var(--cream)}
+#cv{position:absolute;inset:0;z-index:0}
+
+/* Light atmospheric overlays */
+.atm-left{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(105deg,rgba(254,252,247,.97) 0%,rgba(254,252,247,.82) 38%,rgba(254,252,247,.3) 62%,transparent 100%)}
+.atm-bottom{position:absolute;inset-x:0;bottom:0;height:55%;z-index:1;pointer-events:none;background:linear-gradient(to top,rgba(254,252,247,.98) 0%,rgba(254,252,247,.6) 35%,transparent 100%)}
+.atm-top{position:absolute;inset-x:0;top:0;height:35%;z-index:1;pointer-events:none;background:linear-gradient(to bottom,rgba(245,237,214,.65) 0%,transparent 100%)}
+
+/* NAV */
+.nav{position:absolute;top:0;inset-x:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;opacity:0;animation:fadeDown .7s .1s forwards}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:1.1rem;color:var(--dark);text-decoration:none}
+.nav-logo-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--gold),var(--gold3));display:flex;align-items:center;justify-content:center}
+.nav-logo-icon svg{width:20px;height:20px;fill:#fff}
+.nav-links{display:flex;gap:32px}
+.nav-links a{font-size:.875rem;font-weight:500;color:#5a4a2a;text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-links a.active{font-weight:600}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.btn-login{padding:9px 22px;border-radius:10px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#fff;border:none;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.875rem;cursor:pointer;box-shadow:0 4px 16px rgba(184,134,11,.35);transition:all .2s}
+.btn-login:hover{box-shadow:0 6px 22px rgba(184,134,11,.5);transform:translateY(-1px)}
+.btn-lang{padding:7px 14px;border-radius:8px;border:1.5px solid rgba(184,134,11,.3);background:rgba(255,255,255,.8);color:var(--dark);font-family:'DM Sans',sans-serif;font-weight:600;font-size:.8rem;cursor:pointer;backdrop-filter:blur(8px)}
+
+/* CONTENT */
+.content{position:absolute;z-index:5;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 48px;padding-top:80px;padding-bottom:120px}
+
+/* BADGE */
+.badge{display:inline-flex;align-items:center;gap:8px;border-radius:999px;background:linear-gradient(135deg,rgba(184,134,11,.12),rgba(240,192,64,.08));border:1.5px solid rgba(184,134,11,.25);padding:6px 16px 6px 10px;font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);opacity:0;animation:fadeUp .6s .2s forwards}
+.badge-dot{position:relative;width:8px;height:8px;flex-shrink:0}
+.badge-ping{position:absolute;inset:0;border-radius:50%;background:var(--gold3);animation:ping 1.6s ease-in-out infinite;opacity:.6}
+.badge-core{position:absolute;inset:1px;border-radius:50%;background:var(--gold)}
+
+/* HEADLINE */
+.headline{margin-top:20px;font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5.5vw,4.8rem);font-weight:700;line-height:1.02;max-width:13ch;opacity:0;animation:fadeUp .7s .32s forwards}
+.hl-gold{display:block;color:var(--gold);position:relative}
+.hl-gold::after{content:'';position:absolute;left:0;bottom:-4px;width:70%;height:3px;background:linear-gradient(to right,var(--gold3),transparent);border-radius:2px}
+.hl-dark{display:block;color:var(--dark)}
+
+/* SUB */
+.sub{margin-top:22px;max-width:44ch;font-size:.925rem;line-height:1.75;color:var(--muted);font-weight:400;opacity:0;animation:fadeUp .7s .44s forwards}
+
+/* STATS */
+.stats{display:flex;align-items:center;gap:0;margin-top:28px;opacity:0;animation:fadeUp .7s .52s forwards}
+.stat{padding:0 24px 0 0;border-right:1.5px solid rgba(184,134,11,.2)}
+.stat:first-child{padding-left:0}
+.stat:last-child{border-right:none}
+.stat+.stat{padding-left:24px}
+.stat-val{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--gold);line-height:1}
+.stat-lbl{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:3px;font-weight:500}
+
+/* FILTER */
+.filter-wrap{margin-top:30px;max-width:700px;width:100%;opacity:0;animation:fadeUp .8s .62s forwards}
+.filter-card{background:rgba(255,255,255,.92);border:1.5px solid rgba(184,134,11,.18);border-radius:20px;backdrop-filter:blur(20px);box-shadow:0 24px 80px rgba(184,134,11,.12),0 4px 16px rgba(0,0,0,.06),inset 0 1px 0 rgba(255,255,255,.9);padding:16px}
+.filter-row{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px}
+.fsel-wrap{position:relative}
+.fsel-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--gold);pointer-events:none}
+.fsel-icon svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+.fsel{width:100%;height:48px;padding:0 14px 0 36px;border-radius:12px;border:1.5px solid rgba(184,134,11,.15);background:rgba(245,237,214,.4);font-family:'DM Sans',sans-serif;font-size:.875rem;color:#4a3a1a;cursor:pointer;appearance:none;-webkit-appearance:none;outline:none;transition:all .2s}
+.fsel:hover{border-color:rgba(184,134,11,.35);background:rgba(245,237,214,.65)}
+.fsel:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,134,11,.12)}
+.fsel option{background:#fff;color:#333}
+.filter-actions{display:flex;gap:8px;align-items:stretch}
+.btn-adv{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:12px;border:1.5px solid rgba(184,134,11,.2);background:rgba(245,237,214,.5);color:var(--muted);cursor:pointer;transition:all .2s;flex-shrink:0}
+.btn-adv:hover{border-color:var(--gold);color:var(--gold);background:rgba(184,134,11,.08)}
+.btn-adv svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+.btn-search{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 22px;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--gold3));border:none;color:#fff;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;box-shadow:0 6px 24px rgba(184,134,11,.4);white-space:nowrap;transition:all .2s}
+.btn-search:hover{box-shadow:0 8px 32px rgba(184,134,11,.55);transform:translateY(-1px)}
+.btn-search:active{transform:scale(.97)}
+.btn-search svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round}
+.trust{margin-top:13px;padding-top:13px;border-top:1.5px solid rgba(184,134,11,.1);display:flex;align-items:center;justify-content:center;gap:22px;font-size:10.5px;color:var(--muted);font-weight:500;letter-spacing:.04em}
+.trust-item{display:flex;align-items:center;gap:6px}
+.trust-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+
+/* USERS CARD */
+.users-card{position:absolute;bottom:0;right:0;z-index:6;opacity:0;animation:fadeUp .8s .8s forwards}
+.users-inner{border-radius:20px 20px 0 0;background:rgba(255,255,255,.94);border:1.5px solid rgba(184,134,11,.18);border-bottom:none;backdrop-filter:blur(20px);box-shadow:0 -12px 50px rgba(184,134,11,.12),inset 0 1px 0 rgba(255,255,255,.9);padding:20px 28px;display:flex;align-items:center;gap:22px}
+.avatar-stack{display:flex;align-items:center}
+.av{width:48px;height:48px;border-radius:50%;border:2.5px solid rgba(255,255,255,.95);box-shadow:0 2px 10px rgba(184,134,11,.2);overflow:hidden;background:#e8d9b5;flex-shrink:0;transition:transform .2s}
+.av:not(:first-child){margin-left:-12px}
+.av:hover{transform:scale(1.12);z-index:2}
+.av img{width:100%;height:100%;object-fit:cover;display:block}
+.av-more{width:48px;height:48px;border-radius:50%;margin-left:-12px;background:linear-gradient(135deg,var(--gold),var(--gold2));border:2.5px solid #fff;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#fff;box-shadow:0 4px 14px rgba(184,134,11,.4)}
+.uc-div{width:1.5px;align-self:stretch;background:rgba(184,134,11,.15)}
+.rating-block{display:flex;flex-direction:column;align-items:flex-end;gap:5px}
+.rating-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--gold);line-height:1}
+.rating-num sup{font-size:.9rem;color:var(--muted)}
+.stars{display:flex;gap:3px}
+.star{width:13px;height:13px}
+.star path{fill:var(--gold3)}
+.star.empty path{fill:#ddd}
+.rating-lbl{font-size:10px;color:var(--muted);font-weight:500;text-align:right;white-space:nowrap;letter-spacing:.04em}
+
+/* Decorative geometric accent */
+.geo-accent{position:absolute;right:48px;top:50%;transform:translateY(-50%);z-index:3;pointer-events:none;opacity:0;animation:fadeIn 1s .9s forwards}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes ping{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(2.2);opacity:0}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+</style>
+
+<div id="hero">
+  <canvas id="cv"></canvas>
+  <div class="atm-top"></div>
+  <div class="atm-left"></div>
+  <div class="atm-bottom"></div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/></svg></div>
+      Qunuf
+    </a>
+    <div class="nav-links">
+      <a href="#" class="active">Home</a>
+      <a href="#">Properties</a>
+      <a href="#">Blog</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button class="btn-lang">🌐 AR</button>
+      <button class="btn-login">Login</button>
+    </div>
+  </nav>
+
+  <!-- CONTENT -->
+  <div class="content">
+    <span class="badge">
+      <span class="badge-dot"><span class="badge-ping"></span><span class="badge-core"></span></span>
+      Find your next property
+    </span>
+
+    <h1 class="headline">
+      <span class="hl-gold">Choose the right</span>
+      <span class="hl-dark">property to rent</span>
+    </h1>
+
+    <p class="sub">Browse trusted properties from verified agents across the Kingdom — no fees, instant search, 100% online.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-val">50K+</div><div class="stat-lbl">Clients</div></div>
+      <div class="stat"><div class="stat-val">4.5★</div><div class="stat-lbl">Rating</div></div>
+      <div class="stat"><div class="stat-val">100%</div><div class="stat-lbl">Online</div></div>
+    </div>
+
+    <div class="filter-wrap">
+      <div class="filter-card">
+        <div class="filter-row">
+          <div class="fsel-wrap">
+            <span class="fsel-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <select class="fsel"><option>Location</option><option>Riyadh</option><option>Jeddah</option><option>Dammam</option><option>Mecca</option></select>
+          </div>
+          <div class="fsel-wrap">
+            <span class="fsel-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></span>
+            <select class="fsel"><option>Property Type</option><option>Apartment</option><option>Villa</option><option>Office</option><option>Commercial</option></select>
+          </div>
+          <div class="fsel-wrap">
+            <span class="fsel-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+            <select class="fsel"><option>Category</option><option>Furnished</option><option>Unfurnished</option><option>Semi-Furnished</option></select>
+          </div>
+          <div class="filter-actions">
+            <button class="btn-adv" title="Advanced filters">
+              <svg viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+            </button>
+            <button class="btn-search">
+              Search
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="trust">
+          <span class="trust-item"><span class="trust-dot" style="background:#22c55e"></span>No additional fees</span>
+          <span class="trust-item"><span class="trust-dot" style="background:var(--gold)"></span>Trusted properties</span>
+          <span class="trust-item"><span class="trust-dot" style="background:#3b82f6"></span>Instant search</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GEO ACCENT (decorative floating shapes) -->
+  <div class="geo-accent" id="geo"></div>
+
+  <!-- USERS CARD -->
+  <div class="users-card">
+    <div class="users-inner">
+      <div class="avatar-stack">
+        <div class="av"><img src="https://i.pravatar.cc/96?img=11" alt=""/></div>
+        <div class="av"><img src="https://i.pravatar.cc/96?img=32" alt=""/></div>
+        <div class="av"><img src="https://i.pravatar.cc/96?img=45" alt=""/></div>
+        <div class="av"><img src="https://i.pravatar.cc/96?img=58" alt=""/></div>
+        <div class="av-more">+50K</div>
+      </div>
+      <div class="uc-div"></div>
+      <div class="rating-block">
+        <div class="rating-num">4.5<sup>/5</sup></div>
+        <div class="stars">
+          <svg class="star" viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+          <svg class="star" viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+          <svg class="star" viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+          <svg class="star" viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+          <svg class="star empty" viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+        </div>
+        <div class="rating-lbl">Average rating</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const hero = document.getElementById('hero');
+const canvas = document.getElementById('cv');
+const W = ()=>hero.clientWidth, H = ()=>hero.clientHeight;
+
+const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.setSize(W(),H());
+renderer.setClearColor(0xFEFCF7, 1);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.3;
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xFEFCF7);
+scene.fog = new THREE.Fog(0xFEFCF7, 30, 90);
+
+const camera = new THREE.PerspectiveCamera(50, W()/H(), 0.1, 200);
+camera.position.set(12, 7, 28);
+camera.lookAt(8, 3, 0);
+
+// Lights — warm daylight
+scene.add(new THREE.AmbientLight(0xFFF8E7, 1.6));
+
+const sun = new THREE.DirectionalLight(0xFFE4A0, 2.8);
+sun.position.set(20, 30, 10);
+sun.castShadow = true;
+sun.shadow.mapSize.set(2048,2048);
+sun.shadow.camera.near=1; sun.shadow.camera.far=100;
+sun.shadow.camera.left=-40; sun.shadow.camera.right=40;
+sun.shadow.camera.top=40; sun.shadow.camera.bottom=-40;
+sun.shadow.bias=-0.001;
+scene.add(sun);
+
+const fill = new THREE.DirectionalLight(0xC8E8FF, 1.0);
+fill.position.set(-15, 10, 15);
+scene.add(fill);
+
+const goldRefl = new THREE.PointLight(0xD4A017, 2.5, 50);
+goldRefl.position.set(8, 15, 5);
+scene.add(goldRefl);
+
+const rimLight = new THREE.DirectionalLight(0xFFD080, 0.8);
+rimLight.position.set(5, -2, -20);
+scene.add(rimLight);
+
+// Ground
+const groundGeo = new THREE.PlaneGeometry(120, 80);
+const groundMat = new THREE.MeshLambertMaterial({color:0xF0E8D0});
+const ground = new THREE.Mesh(groundGeo, groundMat);
+ground.rotation.x = -Math.PI/2;
+ground.receiveShadow = true;
+scene.add(ground);
+
+// Road
+const roadGeo = new THREE.PlaneGeometry(4, 80);
+const roadMat = new THREE.MeshLambertMaterial({color:0xD8CDB0});
+const road = new THREE.Mesh(roadGeo, roadMat);
+road.rotation.x = -Math.PI/2; road.position.y=0.01; road.position.x=0;
+road.receiveShadow=true; scene.add(road);
+
+// Building factory
+function makeMat(hex, rough=0.6){
+  return new THREE.MeshStandardMaterial({color:hex, roughness:rough, metalness:.1});
+}
+function makeGlassMat(hex){
+  return new THREE.MeshStandardMaterial({color:hex, roughness:0.05, metalness:.6, transparent:true, opacity:.82});
+}
+
+const allBuildings=[];
+
+function addBuilding(x,z,w,d,h,bodyColor,glassColor,accent){
+  const g=new THREE.Group();
+
+  // Podium
+  const podH=h*0.12;
+  const pod=new THREE.Mesh(new THREE.BoxGeometry(w+.4,podH,d+.4),makeMat(bodyColor,0.7));
+  pod.position.y=podH/2; pod.castShadow=true; pod.receiveShadow=true; g.add(pod);
+
+  // Main shaft
+  const shaft=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),makeMat(bodyColor));
+  shaft.position.y=podH+h/2; shaft.castShadow=true; shaft.receiveShadow=true; g.add(shaft);
+
+  // Glass facade panels (front and back)
+  const panelW=w*.7, panelH=h*.75;
+  const panelGeo=new THREE.BoxGeometry(panelW,panelH,.05);
+  const glassMesh=new THREE.Mesh(panelGeo,makeGlassMat(glassColor));
+  glassMesh.position.set(0, podH+h*0.12+panelH/2, d/2+.03);
+  glassMesh.castShadow=true; g.add(glassMesh);
+  const glassBack=glassMesh.clone();
+  glassBack.position.z=-d/2-.03; g.add(glassBack);
+
+  // Horizontal band lines
+  const bandMat=new THREE.MeshStandardMaterial({color:accent,roughness:.3,metalness:.5});
+  const bands=Math.floor(h/1.2);
+  for(let b=0;b<bands;b++){
+    const band=new THREE.Mesh(new THREE.BoxGeometry(w+.08,.07,d+.08),bandMat);
+    band.position.y=podH+(b+.5)*1.2; band.castShadow=false; g.add(band);
+  }
+
+  // Crown / setback
+  const crownH=h*.15;
+  const crownW=w*.65, crownD=d*.65;
+  const crown=new THREE.Mesh(new THREE.BoxGeometry(crownW,crownH,crownD),makeMat(accent,.4));
+  crown.position.y=podH+h+crownH/2; crown.castShadow=true; g.add(crown);
+
+  // Spire
+  const spireH=h*.22;
+  const spireGeo=new THREE.CylinderGeometry(.04,crownW*.15,spireH,8);
+  const spire=new THREE.Mesh(spireGeo,new THREE.MeshStandardMaterial({color:accent,roughness:.2,metalness:.8}));
+  spire.position.y=podH+h+crownH+spireH/2; spire.castShadow=true; g.add(spire);
+
+  // Top light
+  const tLight=new THREE.PointLight(accent,0.8,12);
+  tLight.position.y=podH+h+crownH+spireH+0.5;
+  g.add(tLight);
+
+  g.position.set(x,0,z);
+  allBuildings.push({group:g, baseY:0, spireLight:tLight, glassPanel:glassMesh});
+  scene.add(g);
+}
+
+// Towers — light sandy/warm palette
+addBuilding( 5,  -2, 3.5, 3.0, 18, 0xEDE0C4, 0xB8D4F0, 0xC9A84C); // hero tower
+addBuilding(10,  -3, 2.8, 2.4, 14, 0xE8D8B8, 0xA8C8E8, 0xB8860B);
+addBuilding(15,  -4, 2.2, 2.0, 10, 0xF0E5D0, 0xC0D8F0, 0xD4A017);
+addBuilding( 1,  -3, 2.4, 2.0, 12, 0xEADCC8, 0xB0CCE8, 0xC9A84C);
+addBuilding(18,  -5, 1.8, 1.6,  7, 0xF2E8D8, 0xC8DCF2, 0xB8860B);
+addBuilding(22,  -5, 1.5, 1.4,  5, 0xF5EDE0, 0xCCE0F5, 0xD4A017);
+addBuilding(-2,  -4, 2.0, 1.8,  9, 0xECDFC8, 0xB4CDE8, 0xC9A84C);
+addBuilding(26,  -5, 1.2, 1.1,  4, 0xF5EDE0, 0xD0E2F5, 0xB8860B);
+addBuilding(-5,  -5, 1.5, 1.4,  6, 0xF0E5D8, 0xB8D0E8, 0xD4A017);
+
+// Connecting walkway / plaza
+const plazaGeo=new THREE.PlaneGeometry(25,10);
+const plazaMat=new THREE.MeshLambertMaterial({color:0xE8DCC4});
+const plaza=new THREE.Mesh(plazaGeo,plazaMat);
+plaza.rotation.x=-Math.PI/2; plaza.position.set(10,.01,-7); plaza.receiveShadow=true;
+scene.add(plaza);
+
+// Small trees
+function addTree(x,z){
+  const trunk=new THREE.Mesh(new THREE.CylinderGeometry(.1,.14,.8,8),new THREE.MeshLambertMaterial({color:0x8B6914}));
+  trunk.position.set(x,.4,z); trunk.castShadow=true; scene.add(trunk);
+  const canopy=new THREE.Mesh(new THREE.SphereGeometry(.7,8,8),new THREE.MeshLambertMaterial({color:0x7BAE5C}));
+  canopy.position.set(x,1.6,z); canopy.castShadow=true; scene.add(canopy);
+}
+[[-3,-6],[1,-6],[4,-6],[7,-6],[12,-6],[17,-6],[21,-6],[-3,-8],[4,-8],[10,-8],[17,-8]].forEach(([x,z])=>addTree(x,z));
+
+// Floating gold orbs (decorative particles)
+const orbGroup=new THREE.Group();
+for(let i=0;i<30;i++){
+  const orb=new THREE.Mesh(
+    new THREE.SphereGeometry(Math.random()*.12+.04,8,8),
+    new THREE.MeshStandardMaterial({color:0xD4A017,roughness:.1,metalness:.9,transparent:true,opacity:.55+Math.random()*.3})
+  );
+  orb.position.set((Math.random()-.5)*30+8, Math.random()*18+2, (Math.random()-.5)*15-5);
+  orb.userData.speed=Math.random()*.8+.4;
+  orb.userData.phase=Math.random()*Math.PI*2;
+  orb.userData.radius=Math.random()*.3+.1;
+  orbGroup.add(orb);
+}
+scene.add(orbGroup);
+
+// Sky gradient via background color animation
+// Mouse parallax
+let mx=0,my=0,targetMx=0,targetMy=0;
+document.addEventListener('mousemove',e=>{
+  const r=hero.getBoundingClientRect();
+  targetMx=((e.clientX-r.left)/hero.clientWidth-.5)*2;
+  targetMy=((e.clientY-r.top)/hero.clientHeight-.5)*2;
+});
+
+// Camera dolly animation
+let tick=0;
+const camBase={x:12,y:7,z:28};
+const camTarget={x:8,y:3,z:0};
+
+// Intro flythrough
+let introPhase=true, introT=0;
+
+(function animate(){
+  requestAnimationFrame(animate);
+  tick+=.008;
+
+  // Smooth mouse
+  mx+=(targetMx-mx)*.05;
+  my+=(targetMy-my)*.05;
+
+  if(introPhase){
+    introT=Math.min(introT+.008,1);
+    const ease=1-Math.pow(1-introT,3);
+    camera.position.x=camBase.x + (12-camBase.x)*ease - mx*1.5;
+    camera.position.y=camBase.y + (7-camBase.y)*ease - my*0.8;
+    camera.position.z=40 - ease*12 + Math.sin(tick*.5)*.5;
+    if(introT>=1) introPhase=false;
+  } else {
+    camera.position.x=camBase.x - mx*2.5 + Math.sin(tick*.3)*.4;
+    camera.position.y=camBase.y - my*1.2 + Math.cos(tick*.2)*.3;
+    camera.position.z=camBase.z + Math.sin(tick*.15)*.8;
+  }
+
+  camera.lookAt(camTarget.x + mx*.5, camTarget.y, camTarget.z);
+
+  // Pulse gold light
+  goldRefl.intensity=2.2+Math.sin(tick*1.5)*.6;
+  goldRefl.position.x=8+Math.sin(tick*.6)*3;
+
+  // Animate orbs — drift and bob
+  orbGroup.children.forEach((orb,i)=>{
+    const u=orb.userData;
+    orb.position.y=orb.position.y+(Math.sin(tick*u.speed+u.phase)*.005);
+    orb.position.x=orb.position.x+(Math.cos(tick*u.speed*.7+u.phase)*.004);
+    orb.material.opacity=.4+Math.abs(Math.sin(tick*u.speed+u.phase))*.35;
+  });
+
+  // Subtle building sway — glass panels catch light
+  allBuildings.forEach((b,i)=>{
+    b.glassPanel.material.opacity=.7+Math.abs(Math.sin(tick*.8+i*0.4))*.18;
+  });
+
+  // Sun shimmer
+  sun.intensity=2.4+Math.sin(tick*.9)*.25;
+  sun.position.x=20+Math.sin(tick*.3)*2;
+
+  renderer.render(scene,camera);
+})();
+
+window.addEventListener('resize',()=>{
+  renderer.setSize(W(),H());
+  camera.aspect=W()/H();
+  camera.updateProjectionMatrix();
+});
+</script>
