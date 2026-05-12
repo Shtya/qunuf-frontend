@@ -86,18 +86,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const logout = async (direct = '/') => {
     try {
     setLoggingOut(true);
-
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
-
     await fetch('/api/auth/logout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
     });
-
     setUser(null);
- 
-    window.location.href = 'https://qunuf.com';  
+    window.location.href = '/en';
     } catch {
       // silently ignore — user is logged out locally regardless
     } finally {
