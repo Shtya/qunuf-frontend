@@ -51,6 +51,9 @@ export async function middleware(request: NextRequest) {
     const token = request.cookies.get('accessToken')?.value;
     const { pathname } = request.nextUrl;
 
+    // ✅ BASE_URL ثابت بدون port
+    const BASE_URL = process.env.BASE_URL_FRONT || `${request.nextUrl.protocol}//${request.nextUrl.hostname}`;
+
     // Detect locale from URL
     const locale =
         routing.locales.find((l) => pathname.startsWith(`/${l}`)) ??
@@ -69,12 +72,10 @@ export async function middleware(request: NextRequest) {
     if (publicRoute) {
         // Check if the user is restricted from this specific public route
         if (publicRoute.restricted) {
-            const redirectPath = publicRoute.replace || '/'; // Fallback to '/' if replace is missing
+            const redirectPath = publicRoute.replace || '/';
 
-            // Create the redirect URL (keeping the current locale/origin)
-            const url = request.nextUrl.clone();
-            url.pathname = redirectPath;
-
+            // ✅ استخدام BASE_URL بدل request.nextUrl.clone()
+            const url = new URL(`/${locale}${redirectPath}`, BASE_URL);
             return NextResponse.redirect(url);
         }
 
@@ -82,41 +83,38 @@ export async function middleware(request: NextRequest) {
         return intlMiddleware(request);
     }
 
-
     // -----------------------------
     // 2) Must be authenticated
     // -----------------------------
     if (!token) {
-        return NextResponse.redirect(new URL(`/${locale}/auth/sign-in`, request.url));
+        return NextResponse.redirect(new URL(`/${locale}/auth/sign-in`, BASE_URL));
     }
 
     // -----------------------------
     // 3) Decode JWT and extract role
     // -----------------------------
-
     if (!payload) {
-        return NextResponse.redirect(new URL(`/${locale}/auth/sign-in`, request.url));
+        return NextResponse.redirect(new URL(`/${locale}/auth/sign-in`, BASE_URL));
     }
-
 
     // -----------------------------
     // 4) Role-specific protection
     // -----------------------------
     if (TENANT_ROUTES.some((r) => pathWithoutLocale.startsWith(r))) {
         if (role !== 'tenant') {
-            return NextResponse.redirect(new URL(`/${locale}/auth/sign-in`, request.url));
+            return NextResponse.redirect(new URL(`/${locale}/auth/sign-in`, BASE_URL));
         }
     }
 
     if (LANDLORD_ROUTES.some((r) => pathWithoutLocale.startsWith(r))) {
         if (role !== 'landlord') {
-            return NextResponse.redirect(new URL(`/${locale}/auth/sign-in`, request.url));
+            return NextResponse.redirect(new URL(`/${locale}/auth/sign-in`, BASE_URL));
         }
     }
 
     if (ADMIN_ROUTES.some((r) => pathWithoutLocale.startsWith(r))) {
         if (role !== 'admin') {
-            return NextResponse.redirect(new URL(`/${locale}/auth/sign-in`, request.url));
+            return NextResponse.redirect(new URL(`/${locale}/auth/sign-in`, BASE_URL));
         }
     }
 
@@ -137,10 +135,7 @@ export const config = {
 // Helper functions
 // -----------------------------
 function createPathRegex(pattern: string, exact = true): RegExp {
-    // Escape regex special chars except ":" and "/"
     let regexStr = pattern.replace(/([.+*?=^!${}()[\]|\\])/g, "\\$1");
-
-    // Replace :param with a capturing group for non-slash segments
     regexStr = regexStr.replace(/:([A-Za-z0-9_]+)/g, '([^/]+)');
 
     if (exact) {
@@ -165,7 +160,6 @@ function getPublicRouteMatch(path, userRole) {
 
     if (!match) return null;
 
-    // If the route has a 'notFor' restriction and it matches the current user's role
     if (match.notFor && match.notFor === userRole) {
         return { ...match, restricted: true };
     }
