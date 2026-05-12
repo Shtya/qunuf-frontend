@@ -456,7 +456,7 @@ export function HeroFilter() {
         {/* Gold glow ring */}
         <div aria-hidden="true" className="absolute -inset-[1px] rounded-[20px] bg-gradient-to-r from-[color:var(--secondary)]/30 via-white/5 to-[color:var(--secondary)]/20 pointer-events-none" />
 
-        <div className="relative rounded-[18px] bg-white/97 dark:bg-neutral-900/97 backdrop-blur-2xl shadow-[0_24px_64px_rgba(0,0,0,0.28),0_4px_12px_rgba(0,0,0,0.12)] overflow-hidden">
+        <div className="relative rounded-[18px] bg-white/97 dark:bg-neutral-900/97 backdrop-blur-2xl shadow-[0_24px_64px_rgba(0,0,0,0.28),0_4px_12px_rgba(0,0,0,0.12)] ">
           {/* Top accent stripe */}
           <div aria-hidden="true" className="h-[2.5px] w-full bg-gradient-to-r ltr:from-[color:var(--secondary)] ltr:to-transparent rtl:from-transparent rtl:to-[color:var(--secondary)] via-[color:var(--lightGold)]/70" />
 
