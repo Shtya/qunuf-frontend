@@ -9,9 +9,10 @@ export type CalendarEventType =
     | 'payment_made'
     | 'renewal_request'
     | 'custom'
-    | 'reminder';
+    | 'reminder'
+    | 'maintenance';
 
-export type CalendarEventSource = 'contract' | 'payment' | 'renewal' | 'custom';
+export type CalendarEventSource = 'contract' | 'payment' | 'renewal' | 'custom' | 'maintenance';
 
 export type CalendarView = 'month' | 'week' | 'day';
 
@@ -84,6 +85,7 @@ export const EVENT_TYPE_COLORS: Record<CalendarEventType, string> = {
     renewal_request: '#8B5CF6',
     custom:         '#4F46E5',
     reminder:       '#EC4899',
+    maintenance:    '#F59E0B',
 };
 
 export const EVENT_TYPE_LABELS: Record<CalendarEventType, string> = {
@@ -96,6 +98,7 @@ export const EVENT_TYPE_LABELS: Record<CalendarEventType, string> = {
     renewal_request: 'Renewal Request',
     custom:          'Custom Event',
     reminder:        'Reminder',
+    maintenance:     'Maintenance',
 };
 
 export const ALL_EVENT_TYPES: CalendarEventType[] = [
@@ -108,4 +111,5 @@ export const ALL_EVENT_TYPES: CalendarEventType[] = [
     'renewal_request',
     'custom',
     'reminder',
+    'maintenance',
 ];

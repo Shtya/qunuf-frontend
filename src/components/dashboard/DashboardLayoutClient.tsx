@@ -36,6 +36,7 @@ import { IoChatbubbleEllipsesOutline } from 'react-icons/io5';
 import { TbBuildingCommunity, TbContract } from 'react-icons/tb';
 import { PiBuildingApartment } from 'react-icons/pi';
 import { LuCalendarDays } from 'react-icons/lu';
+import { MdOutlineBuildCircle } from 'react-icons/md';
 import { GrContact, GrLanguage } from 'react-icons/gr';
 import { HiOutlineUserGroup, HiOutlineUsers, HiX } from 'react-icons/hi';
 import { BsBell } from 'react-icons/bs';
@@ -72,23 +73,26 @@ export function getDashboardItems(role: Role, adminUserId?: string): SidebarLink
 	const tenant: SidebarLink[] = [
 		{ href: getDashboardHref('contracts'), key: 'contracts', Icon: TbContract, order: 2 },
 		{ href: getDashboardHref('renewRequests'), key: 'renewRequests', Icon: MdOutlineFactCheck, order: 3 },
+		{ href: getDashboardHref('maintenance'), key: 'maintenance', Icon: MdOutlineBuildCircle, order: 4 },
 		{ href: getDashboardHref('chats', { user: adminUserId }), key: 'support', Icon: FaHeadset, order: 19, disabled: !adminUserId },
 	];
 	const landlord: SidebarLink[] = [
 		{ href: getDashboardHref('contracts'), key: 'contracts', Icon: TbContract, order: 2 },
 		{ href: getDashboardHref('properties'), key: 'properties', Icon: PiBuildingApartment, order: 3 },
+		{ href: getDashboardHref('maintenance'), key: 'maintenance', Icon: MdOutlineBuildCircle, order: 4 },
 		{ href: getDashboardHref('chats', { user: adminUserId }), key: 'support', Icon: FaHeadset, order: 19, disabled: !adminUserId },
 	];
 	const admin: SidebarLink[] = [
 		{ href: getDashboardHref('properties'), key: 'properties', Icon: PiBuildingApartment, order: 2 },
 		{ href: getDashboardHref('contracts'), key: 'contracts', Icon: TbContract, order: 3 },
 		{ href: getDashboardHref('users'), key: 'users', Icon: HiOutlineUsers, order: 4 },
-		{ href: getDashboardHref('contactUs'), key: 'contactUs', Icon: GrContact, order: 5 },
-		{ href: getDashboardHref('blogs'), key: 'blogs', Icon: FaRegNewspaper, order: 6 },
-		{ href: getDashboardHref('teamMembers'), key: 'teamMembers', Icon: HiOutlineUsers, order: 7 },
-		{ href: getDashboardHref('aboutUs'), key: 'aboutUs', Icon: HiOutlineUserGroup, order: 8 },
-		{ href: getDashboardHref('departments'), key: 'departments', Icon: TbBuildingCommunity, order: 9 },
-		{ href: getDashboardHref('websiteSettings'), key: 'websiteSettings', Icon: MdOutlineSettingsApplications, order: 10 },
+		{ href: getDashboardHref('maintenance'), key: 'maintenance', Icon: MdOutlineBuildCircle, order: 5 },
+		{ href: getDashboardHref('contactUs'), key: 'contactUs', Icon: GrContact, order: 6 },
+		{ href: getDashboardHref('blogs'), key: 'blogs', Icon: FaRegNewspaper, order: 7 },
+		{ href: getDashboardHref('teamMembers'), key: 'teamMembers', Icon: HiOutlineUsers, order: 8 },
+		{ href: getDashboardHref('aboutUs'), key: 'aboutUs', Icon: HiOutlineUserGroup, order: 9 },
+		{ href: getDashboardHref('departments'), key: 'departments', Icon: TbBuildingCommunity, order: 10 },
+		{ href: getDashboardHref('websiteSettings'), key: 'websiteSettings', Icon: MdOutlineSettingsApplications, order: 11 },
 	];
 	switch (role) {
 		case 'tenant': return [...common, ...tenant];

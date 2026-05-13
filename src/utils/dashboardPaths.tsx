@@ -23,7 +23,8 @@ export type DashboardPathKey =
     | 'websiteSettings'
 		| 'logout'
     | 'users'
-    | 'calendar';
+    | 'calendar'
+    | 'maintenance';
 
 export const dashboardPaths: Record<DashboardPathKey, string> = {
     root: '',
@@ -49,6 +50,7 @@ export const dashboardPaths: Record<DashboardPathKey, string> = {
     users: 'users' ,
     logout: 'logout',
     calendar: 'calendar',
+    maintenance: 'maintenance',
 };
 
 

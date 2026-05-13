@@ -374,6 +374,7 @@ export default function CalendarView() {
                 onClose={() => setSelectedEvent(null)}
                 onEdit={handleEdit}
                 onDelete={handleDelete}
+                onRefresh={refetch}
             />
 
             <EventFormModal
