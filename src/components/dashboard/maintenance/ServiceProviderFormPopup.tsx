@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Popup from '@/components/atoms/Popup';
 import { useTranslations } from 'next-intl';
 import { useServiceProviders } from '@/hooks/dashboard/maintenance/useServiceProviders';
-import { ServiceProvider } from '@/types/dashboard/maintenance';
+import { ServiceProvider, ServiceCategory } from '@/types/dashboard/maintenance';
 
 interface Props {
     show: boolean;
@@ -13,14 +13,24 @@ interface Props {
     onSuccess?: () => void;
 }
 
-const CATEGORIES = ['electrical','plumbing','hvac','carpentry','painting','cleaning','security','landscaping','general','other'];
+interface FormData {
+    name: string;
+    email: string;
+    phone: string;
+    serviceCategory: ServiceCategory;
+    description: string;
+    slaHours: string;
+    address: string;
+}
+
+const CATEGORIES: ServiceCategory[] = ['electrical','plumbing','hvac','carpentry','painting','cleaning','security','landscaping','general','other'];
 
 export default function ServiceProviderFormPopup({ show, provider, onClose, onSuccess }: Props) {
     const t = useTranslations('dashboard.maintenance');
     const { createProvider, updateProvider } = useServiceProviders();
     const isEdit = !!provider;
 
-    const [form, setForm] = useState({
+    const [form, setForm] = useState<FormData>({
         name: '',
         email: '',
         phone: '',
@@ -109,7 +119,7 @@ export default function ServiceProviderFormPopup({ show, provider, onClose, onSu
                         <input type="email" value={form.email} onChange={e => setForm(p => ({ ...p, email: e.target.value }))} className={inputCls} />
                     ))}
                     {field(t('categoryLabel'), (
-                        <select value={form.serviceCategory} onChange={e => setForm(p => ({ ...p, serviceCategory: e.target.value }))} className={`${inputCls} cursor-pointer`}>
+                        <select value={form.serviceCategory} onChange={e => setForm(p => ({ ...p, serviceCategory: e.target.value as ServiceCategory }))} className={`${inputCls} cursor-pointer`}>
                             {CATEGORIES.map(c => <option key={c} value={c}>{t(`categoryOptions.${c}`)}</option>)}
                         </select>
                     ))}
