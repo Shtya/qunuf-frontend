@@ -48,8 +48,19 @@ const ADMIN_ROUTES: string[] = ['/website-settings'];
 // 3) Middleware function
 // -----------------------------
 export async function middleware(request: NextRequest) {
-    const token = request.cookies.get('accessToken')?.value;
     const { pathname } = request.nextUrl;
+
+    // Fix double locale prefix: /en/en/... or /ar/ar/... or /en/ar/... → keep only the first
+    const locales = routing.locales.join('|');
+    const doubleLocale = new RegExp(`^/(${locales})/(${locales})(/.*)?$`);
+    const match = pathname.match(doubleLocale);
+    if (match) {
+        const url = request.nextUrl.clone();
+        url.pathname = `/${match[1]}${match[3] ?? '/'}`;
+        return NextResponse.redirect(url);
+    }
+
+    const token = request.cookies.get('accessToken')?.value;
 
     // ✅ BASE_URL ثابت بدون port
     const BASE_URL = process.env.BASE_URL_FRONT || `${request.nextUrl.protocol}//${request.nextUrl.hostname}`;
