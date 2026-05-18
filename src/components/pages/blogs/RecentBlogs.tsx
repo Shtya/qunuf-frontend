@@ -315,7 +315,7 @@ function HeroBlogCard({ blog }: { blog: ViewBlog }) {
                 <Link
                     href={`/blogs/${blog.slug}`}
                     className={cn(
-                        'font-serif text-2xl font-bold leading-[1.25] tracking-tight text-dark',
+                        'font-serif text-2xl font-bold md: leading-[1.25] tracking-tight text-dark',
                         'transition-colors duration-300 hover:text-secondary',
                         'focus-visible:outline-none focus-visible:underline',
                         'md:text-[1.85rem] lg:text-[2rem]'
@@ -325,7 +325,7 @@ function HeroBlogCard({ blog }: { blog: ViewBlog }) {
                 </Link>
 
                 {/* Description */}
-                <div className="line-clamp-4 text-[0.875rem] leading-[1.75] text-gray-500 dark:text-gray-400 md:text-[0.9375rem]">
+                <div className="line-clamp-4 text-[0.875rem] md: leading-[1.75] text-gray-500 dark:text-gray-400 md:text-[0.9375rem]">
                     <RichTextRenderer content={description} className="prose prose-sm max-w-none" />
                 </div>
 
@@ -395,7 +395,7 @@ function GridBlogCard({ blog }: { blog: ViewBlog }) {
                 )}>
                     <time
                         dateTime={new Date(blog.created_at).toISOString()}
-                        className="text-[10.5px] font-semibold leading-none tracking-wide text-secondary"
+                        className="text-[10.5px] font-semibold md: leading-none tracking-wide text-secondary"
                     >
                         {formattedDate}
                     </time>
@@ -423,7 +423,7 @@ function GridBlogCard({ blog }: { blog: ViewBlog }) {
                 <Link
                     href={`/blogs/${blog.slug}`}
                     className={cn(
-                        'line-clamp-2 font-serif text-[1.0625rem] font-bold leading-snug text-dark',
+                        'line-clamp-2 font-serif text-[1.0625rem] font-bold md: leading-snug text-dark',
                         'transition-colors duration-300 hover:text-secondary',
                         'focus-visible:outline-none focus-visible:underline'
                     )}
@@ -432,7 +432,7 @@ function GridBlogCard({ blog }: { blog: ViewBlog }) {
                 </Link>
 
                 {/* Description */}
-                <div className="line-clamp-3 text-[0.8125rem] leading-relaxed text-gray-500 dark:text-gray-400">
+                <div className="line-clamp-3 text-[0.8125rem] md: leading-relaxed text-gray-500 dark:text-gray-400">
                     <RichTextRenderer content={description} className="prose prose-sm max-w-none" />
                 </div>
 
@@ -481,7 +481,7 @@ function EmptyState() {
             <h2 className="mb-1.5 text-lg font-semibold text-gray-700 dark:text-gray-300">
                 {t('empty.title')}
             </h2>
-            <p className="max-w-sm text-sm leading-relaxed text-gray-400">
+            <p className="max-w-sm text-sm md: leading-relaxed text-gray-400">
                 {t('empty.description')}
             </p>
         </div>
@@ -625,7 +625,7 @@ export default function RecentBlogs({ slug }: { slug?: string }) {
 
                 {recentBlog && <BlogCard blog={recentBlog} list />}
 
-                <h2 className="mb-6 mt-12 text-3xl font-bold leading-tight text-secondary md:text-4xl lg:mt-16 lg:text-[2.6rem]">
+                <h2 className="mb-6 mt-12 text-3xl font-bold md: leading-tight text-secondary md:text-4xl lg:mt-16 lg:text-[2.6rem]">
                     {t('our')}{' '}
                     <span className="text-dark">{t('recentBlogs')}</span>
                 </h2>

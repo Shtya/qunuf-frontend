@@ -30,7 +30,7 @@ export function CalendarEventPill({ event, compact = false, onClick }: Props) {
                 'w-full text-start truncate rounded-md font-medium transition-all duration-150',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1',
                 compact
-                    ? 'text-[9px] px-1 py-0.5 leading-tight'
+                    ? 'text-[9px] px-1 py-0.5 md: leading-tight'
                     : 'text-[11px] px-2 py-1',
                 'hover:brightness-110 active:scale-95',
             )}

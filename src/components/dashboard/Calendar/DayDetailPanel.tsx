@@ -79,7 +79,7 @@ export function DayDetailPanel({
                     <div className="flex-1 min-w-0">
                         {date && (
                             <>
-                                <p className="text-[18px] font-black text-dark leading-tight">
+                                <p className="text-[18px] font-black text-dark md: leading-tight">
                                     {format(date, 'd')}
                                 </p>
                                 <p className="text-[12px] text-dark/40 font-semibold mt-0.5">
@@ -203,7 +203,7 @@ function DayEventCard({
                     <span className="text-[10px] font-black uppercase">{label.slice(0, 2)}</span>
                 </div>
                 <div className="flex-1 min-w-0">
-                    <p className="text-[13px] font-bold text-dark leading-tight line-clamp-2">{event.title}</p>
+                    <p className="text-[13px] font-bold text-dark md: leading-tight line-clamp-2">{event.title}</p>
                     <span
                         className="mt-1 inline-flex items-center gap-1 text-[9px] font-bold px-1.5 py-0.5 rounded-md"
                         style={{ backgroundColor: event.color + '15', color: event.color }}

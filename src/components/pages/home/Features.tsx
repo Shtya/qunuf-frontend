@@ -95,12 +95,12 @@ export default function Features() {
               id="features-heading"
               className="
                 text-3xl sm:text-4xl lg:text-5xl xl:text-[55px]
-                font-bold text-dark leading-tight tracking-tight
+                font-bold text-dark md: leading-tight tracking-tight
               "
             >
               {t("mainTitle")}
             </h2>
-            <p className="text-sm sm:text-base text-dark/70 leading-relaxed max-w-[520px]">
+            <p className="text-sm sm:text-base text-dark/70 md: leading-relaxed max-w-[520px]">
               {t("mainDescription")}
             </p>
           </div>
@@ -187,10 +187,10 @@ function FeatureCard({
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center gap-4 sm:gap-5 w-full">
-        <h3 className="text-xl sm:text-2xl lg:text-[32px] text-white font-bold leading-snug max-w-[320px]">
+        <h3 className="text-xl sm:text-2xl lg:text-[32px] text-white font-bold md: leading-snug max-w-[320px]">
           {title}
         </h3>
-        <p className="text-sm sm:text-base text-white/75 leading-relaxed max-w-[380px]">
+        <p className="text-sm sm:text-base text-white/75 md: leading-relaxed max-w-[380px]">
           {description}
         </p>
         <PrimaryButton

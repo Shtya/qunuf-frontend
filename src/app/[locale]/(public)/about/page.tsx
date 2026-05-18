@@ -236,7 +236,7 @@ function AboutInfoCard({
 
 				{/* Title */}
 				<h3
-					className="font-bold text-[19px] leading-snug mb-3"
+					className="font-bold text-[19px] md: leading-snug mb-3"
 					style={{ color: "var(--primary)" }}
 				>
 					{title}
@@ -250,7 +250,7 @@ function AboutInfoCard({
 
 				{/* Body text */}
 				<p
-					className="text-[14px] md:text-[15px] leading-[1.8] flex-1"
+					className="text-[14px] md:text-[15px] md: leading-[1.8] flex-1"
 					style={{ color: "var(--secondary-hover)" }}
 				>
 					{text}
@@ -264,7 +264,7 @@ function AboutInfoCard({
 				aria-hidden="true"
 				className="
           absolute bottom-5 end-6
-          text-[80px] font-bold leading-none tracking-[-4px]
+          text-[80px] font-bold md: leading-none tracking-[-4px]
           select-none pointer-events-none
           transition-all duration-300
           text-[rgba(75,61,37,0.07)]

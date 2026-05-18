@@ -369,7 +369,7 @@ export function ViewReviewPopup({ row: contract, onClose }: ReviewPopupsProps) {
                 {review.reviewText && (
                     <div>
                         <FieldLabel icon={LucideMessageSquare} label={t('fields.reviewText')} />
-                        <p className="text-sm text-[var(--dark)] bg-[var(--lighter)] border border-[var(--gray)] rounded-xl px-4 py-3 leading-relaxed">
+                        <p className="text-sm text-[var(--dark)] bg-[var(--lighter)] border border-[var(--gray)] rounded-xl px-4 py-3 md: leading-relaxed">
                             {review.reviewText}
                         </p>
                     </div>

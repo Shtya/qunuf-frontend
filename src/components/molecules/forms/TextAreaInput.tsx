@@ -65,7 +65,7 @@ export default function TextAreaInput({
                     readOnly={readonly}
                     maxLength={maxLength}
                     className={cn(
-                        "relative w-full p-4 rounded-xl text-sm font-medium leading-relaxed",
+                        "relative w-full p-4 rounded-xl text-sm font-medium md: leading-relaxed",
                         "bg-white border-2 transition-all duration-200",
                         "text-dark placeholder:text-placeholder",
                         "focus:outline-none focus:ring-2 focus:ring-transparent",

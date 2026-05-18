@@ -130,7 +130,7 @@ export function DashboardCard({
       {hasHeader && (
         <header className="relative z-10 shrink-0 flex items-center justify-between gap-3 px-5 md:px-6 pt-5 md:pt-6 pb-4 border-b border-[var(--gray)]/40">
           {title && (
-            <h3 className="min-w-0 flex-1 text-start font-bold text-lg md:text-xl text-[var(--dark)] leading-snug tracking-tight line-clamp-1">
+            <h3 className="min-w-0 flex-1 text-start font-bold text-lg md:text-xl text-[var(--dark)] md: leading-snug tracking-tight line-clamp-1">
               {title}
             </h3>
           )}
@@ -320,10 +320,10 @@ export function EditableField({
       <div className="flex items-center justify-between gap-4">
         {/* Left: label + value */}
         <div className="flex flex-col gap-0.5 min-w-0 flex-1">
-          <span className="text-xs font-semibold text-[var(--placeholder)] uppercase tracking-wide leading-none">
+          <span className="text-xs font-semibold text-[var(--placeholder)] uppercase tracking-wide md: leading-none">
             {label}
           </span>
-          <div className="text-sm font-medium text-[var(--dark)] mt-1 leading-snug break-words">
+          <div className="text-sm font-medium text-[var(--dark)] mt-1 md: leading-snug break-words">
             {valueDisplay || (
               <span className="text-[var(--placeholder)] italic font-normal text-xs">
                 {t("notProvided")}

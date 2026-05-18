@@ -184,7 +184,7 @@ export default function ContractDetailsPopup({ row, onClose }: ContractDetailsPo
                         <SectionHeader icon={<BiFile />} title={t("details.terms")} />
                         <div className="p-6 bg-gradient-to-br from-lighter/30 to-highlight/20 rounded-2xl border border-secondary/10">
                             <div className="max-h-[400px] overflow-y-auto pr-3 custom-scrollbar">
-                                <p className="text-sm text-grey-dark whitespace-pre-wrap leading-relaxed font-medium">
+                                <p className="text-sm text-grey-dark whitespace-pre-wrap md: leading-relaxed font-medium">
                                     {details.currentTerms}
                                 </p>
                             </div>

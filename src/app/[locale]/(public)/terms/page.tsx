@@ -43,7 +43,7 @@ export default async function TermsPage() {
                     >
                         <RichTextRenderer
                             content={terms}
-                            className="text-lg leading-loose text-dark"
+                            className="text-lg md: leading-loose text-dark"
                             loader={<LegalSkeleton />}
                         />
                     </div>

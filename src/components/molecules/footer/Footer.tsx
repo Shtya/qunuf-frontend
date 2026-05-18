@@ -112,7 +112,7 @@ function FooterLink({ href, label }: FooterLinkProps) {
         aria-current={isActive ? 'page' : undefined}
         className={`
           group relative inline-flex items-center gap-2
-          text-[14px] sm:text-[15px] leading-snug
+          text-[14px] sm:text-[15px] md: leading-snug
           transition-colors duration-200
           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded
           ${isActive ? 'text-primary font-semibold' : 'text-white/65 hover:text-white'}
@@ -201,7 +201,7 @@ export default function Footer() {
                   <Skeleton width="w-4/6" height="h-4" />
                 </div>
               ) : (
-                <p className="text-[14px] sm:text-[15px] text-white/60 leading-relaxed">
+                <p className="text-[14px] sm:text-[15px] text-white/60 md: leading-relaxed">
                   {isAr ? settings?.description_ar : settings?.description_en}
                 </p>
               )}
@@ -243,7 +243,7 @@ export default function Footer() {
                 {loadingSettings ? (
                   <Skeleton width="w-44" height="h-4" />
                 ) : (
-                  <span className="text-[14px] sm:text-[15px] leading-snug">{settings?.address}</span>
+                  <span className="text-[14px] sm:text-[15px] md: leading-snug">{settings?.address}</span>
                 )}
               </li>
 

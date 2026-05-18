@@ -12,7 +12,7 @@ export function LocationSection({ control }: { control: Control<any> }) {
     return (
         <div className="my-8">
             <div className="flex justify-between items-center">
-                <h3 className="text-dark font-bold text-[20px] md:text-[22px] leading-[24px]">
+                <h3 className="text-dark font-bold text-[20px] md:text-[22px] md: leading-[24px]">
                     {t("location")}
                 </h3>
                 <SecondaryButton

@@ -188,7 +188,7 @@ function StatPill({ icon, value, label, delay, className, pulse }: StatPillProps
         {icon}
       </div>
       <div>
-        <div className="font-black text-[15px] text-[color:var(--secondary)] leading-tight flex items-center gap-1.5">
+        <div className="font-black text-[15px] text-[color:var(--secondary)] md: leading-tight flex items-center gap-1.5">
           {value}
           {pulse && (
             <span className="relative flex h-2 w-2">
@@ -197,7 +197,7 @@ function StatPill({ icon, value, label, delay, className, pulse }: StatPillProps
             </span>
           )}
         </div>
-        <div className="text-slate-500 text-[11px] font-medium leading-tight mt-0.5">{label}</div>
+        <div className="text-slate-500 text-[11px] font-medium md: leading-tight mt-0.5">{label}</div>
       </div>
     </div>
   );
@@ -283,7 +283,7 @@ export default function HeroSection() {
           className="absolute top-[18%] ltr:left-8 rtl:right-8 hidden lg:flex"
         />
         <StatPill
-          icon={<span className="text-base leading-none">🔔</span>}
+          icon={<span className="text-base md: leading-none">🔔</span>}
           value={t('statBooking') ?? 'New Booking'}
           label={t('statBookingLabel') ?? 'Just now · Cairo'}
           delay={2.05}
@@ -373,13 +373,13 @@ function HeroCopy() {
 
       <h1
         ref={headlineRef}
-        className="font-black tracking-tight text-[clamp(2.6rem,6vw,5rem)] leading-[1.08] text-white max-w-[14ch]"
+        className="font-black tracking-tight text-[clamp(2.6rem,6vw,5rem)] md: leading-[1.08] text-white max-w-[14ch]"
       >
         {lines.map((line, li) => (
           <span key={li} className="block">
             {line.split(' ').map((word, wi) => (
               /* Each word gets its own overflow-hidden container so it clips during slide-up */
-              <span key={`${li}-${wi}`} className="inline-block overflow-hidden ltr:mr-[0.22em] rtl:ml-[0.22em] align-bottom leading-[1.18]">
+              <span key={`${li}-${wi}`} className="inline-block overflow-hidden ltr:mr-[0.22em] rtl:ml-[0.22em] align-bottom md: leading-[1.18]">
                 <span
                   className={cn(
                     'hw inline-block',
@@ -401,7 +401,7 @@ function HeroCopy() {
       <p
         ref={subcopyRef}
         style={{ opacity: 0 }}
-        className="mt-5 max-w-[54ch] text-sm sm:text-[15px] leading-[1.8] text-white/60 font-light"
+        className="mt-5 max-w-[54ch] text-sm sm:text-[15px] md: leading-[1.8] text-white/60 font-light"
       >
         {t('subcopy') as string}
       </p>
@@ -592,14 +592,14 @@ export function UsersCard() {
             style={{ marginLeft: -10, zIndex: AVATAR_SRCS.length + 1 }}
             aria-hidden="true"
           >
-            <span className="text-white text-[10px] font-black leading-none">{t('avatarMore')}</span>
+            <span className="text-white text-[10px] font-black md: leading-none">{t('avatarMore')}</span>
           </div>
         </div>
 
         <div className="hidden sm:block w-px self-stretch bg-slate-200/60" aria-hidden="true" />
 
         <div className="flex flex-row sm:flex-col items-center sm:ltr:items-end sm:rtl:items-start gap-3 sm:gap-1.5">
-          <p className="text-2xl sm:text-3xl font-black text-[color:var(--secondary)] leading-none tabular-nums">
+          <p className="text-2xl sm:text-3xl font-black text-[color:var(--secondary)] md: leading-none tabular-nums">
             {RATING}
             <span className="text-sm font-semibold text-slate-400 ltr:ml-0.5 rtl:mr-0.5">/5</span>
           </p>

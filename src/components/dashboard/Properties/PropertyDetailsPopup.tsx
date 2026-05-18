@@ -72,9 +72,9 @@ export default function PropertyDetailsPopup({ row, onClose }: PropertyDetailsPo
                         {/* Info */}
                         <div className="flex-1 space-y-1">
                             <h2 className="text-3xl font-bold text-white">{details.name}</h2>
-                            <p className="text-sm text-white/80 leading-relaxed">{details.description}</p>
+                            <p className="text-sm text-white/80 md: leading-relaxed">{details.description}</p>
                             {details.additionalDetails && (
-                                <p className="text-sm text-white/60 leading-relaxed  ">
+                                <p className="text-sm text-white/60 md: leading-relaxed  ">
                                     {details.additionalDetails}
                                 </p>
                             )}

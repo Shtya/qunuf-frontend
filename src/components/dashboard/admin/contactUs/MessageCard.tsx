@@ -29,7 +29,7 @@ export function MessageCard({ name, phone, email, message }: MessageCardProps) {
           </div>
           {/* Name */}
           <div className="min-w-0">
-            <h3 className="text-sm font-semibold text-white truncate leading-snug">{name}</h3>
+            <h3 className="text-sm font-semibold text-white truncate md: leading-snug">{name}</h3>
             <p className="text-[10px] font-medium uppercase tracking-widest text-white/50 mt-0.5">Contact</p>
           </div>
         </div>
@@ -71,7 +71,7 @@ export function MessageCard({ name, phone, email, message }: MessageCardProps) {
           <>
             <div className="h-px bg-white/15" />
             <div className="rounded-xl bg-black/15 border border-white/10 px-4 py-3">
-              <p className="text-xs text-white/70 leading-relaxed line-clamp-4">{message}</p>
+              <p className="text-xs text-white/70 md: leading-relaxed line-clamp-4">{message}</p>
             </div>
           </>
         )}

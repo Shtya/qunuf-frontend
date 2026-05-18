@@ -195,7 +195,7 @@ export default function Step1({ nextStep }: { nextStep: () => void }) {
                 <StepTitle title={t('title')} subtitle={t('subtitle')} />
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                    <h1 className="text-dark font-semibold text-[28px] sm:text-[32px] md:text-[36px] leading-[100%] tracking-normal">
+                    <h1 className="text-dark font-semibold text-[28px] sm:text-[32px] md:text-[36px] md: leading-[100%] tracking-normal">
                         {t('sectionTitle')}
                     </h1>
 

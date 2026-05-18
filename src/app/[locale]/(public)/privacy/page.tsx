@@ -44,7 +44,7 @@ export default async function PrivacyPage() {
                     >
                         <RichTextRenderer
                             content={privacyContent}
-                            className="text-lg leading-loose text-dark"
+                            className="text-lg md: leading-loose text-dark"
                             loader={<div>
                                 <LegalSkeleton />
                             </div>}

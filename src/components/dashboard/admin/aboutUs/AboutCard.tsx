@@ -46,7 +46,7 @@ export default function AboutCard({ sectionKey, item, onOpen }: AboutCardProps) 
             <div className="flex flex-col flex-1 p-5 md:p-6 text-center md:text-start min-w-0">
                 <div className="flex flex-col md:flex-row justify-between items-start gap-4">
                     <div className="space-y-2 flex-1">
-                        <h2 className="font-bold text-[26px] sm:text-[30px] text-dark leading-tight group-hover:text-primary transition-colors duration-200">
+                        <h2 className="font-bold text-[26px] sm:text-[30px] text-dark md: leading-tight group-hover:text-primary transition-colors duration-200">
                             {title}
                         </h2>
 
@@ -63,7 +63,7 @@ export default function AboutCard({ sectionKey, item, onOpen }: AboutCardProps) 
                 </div>
 
                 <div className="mt-6 flex-1">
-                    <p className="text-base sm:text-lg text-dark/70 leading-relaxed whitespace-pre-line line-clamp-4 md:line-clamp-none">
+                    <p className="text-base sm:text-lg text-dark/70 md: leading-relaxed whitespace-pre-line line-clamp-4 md:line-clamp-none">
                         {description || t('noContent')}
                     </p>
                 </div>

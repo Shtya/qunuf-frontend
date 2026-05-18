@@ -11,7 +11,7 @@ export default function RentalIncomeCard() {
                         <MdOutlineArrowOutward className="text-primary" />
                     </div>
                     <div className="flex flex-col gap-1">
-                        <p className="text-base font-semibold text-dark leading-tight">
+                        <p className="text-base font-semibold text-dark md: leading-tight">
                             Rental Income – 123 Oak Street
                         </p>
                         <p className="text-sm text-input">123 Oak Street, Apt 2B</p>

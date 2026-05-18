@@ -98,7 +98,7 @@ export default function SelectInput({
         <label className=" text-sm font-semibold text-[color:var(--input)] flex items-center gap-1 select-none">
           {label}
           {required && (
-            <span className="text-red-500 leading-none" aria-hidden="true">
+            <span className="text-red-500 md: leading-none" aria-hidden="true">
               *
             </span>
           )}

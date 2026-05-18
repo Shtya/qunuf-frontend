@@ -160,7 +160,7 @@ export default function Step3({ nextStep, createdContract }: { nextStep: () => v
                             </h3>
                             <div className="p-4 bg-white rounded-lg border border-gray-200">
                                 <div className="max-h-[700px] overflow-y-auto pr-2 custom-scrollbar">
-                                    <p className="text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">
+                                    <p className="text-sm text-gray-700 whitespace-pre-wrap md: leading-relaxed">
                                         {contract.currentTerms}
                                     </p>
                                 </div>

@@ -40,7 +40,7 @@ export default function TableError({ message, onRetry }: TableErrorProps) {
                     <h3 className="text-xl font-bold text-red-900">
                         {t('title')}
                     </h3>
-                    <p className="text-sm text-red-700/80 leading-relaxed">
+                    <p className="text-sm text-red-700/80 md: leading-relaxed">
                         {message || "We encountered an error while loading the data. Please try again."}
                     </p>
                 </div>

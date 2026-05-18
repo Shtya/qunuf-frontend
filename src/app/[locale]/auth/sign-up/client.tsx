@@ -35,7 +35,7 @@ function Logo({ className, small = false }: { className?: string; small?: boolea
 
   return (
     <Link href="/" className={cn('flex items-center flex-shrink-0', className)}>
-      <span className={cn(textSize, 'font-extrabold text-primary tracking-tight leading-none')}>
+      <span className={cn(textSize, 'font-extrabold text-primary tracking-tight md: leading-none')}>
         {t('logo')}
       </span>
     </Link>
@@ -199,7 +199,7 @@ function TextInput({
       {label && (
         <label className="text-sm font-semibold text-[color:var(--input)] flex items-center gap-1 select-none ltr:text-left rtl:text-right">
           {label}
-          {required && <span className="text-red-500 leading-none" aria-hidden="true">*</span>}
+          {required && <span className="text-red-500 md: leading-none" aria-hidden="true">*</span>}
         </label>
       )}
 
@@ -303,7 +303,7 @@ function PasswordInput({
       {label && (
         <label className="text-sm font-semibold text-[color:var(--input)] flex items-center gap-1 select-none ltr:text-left rtl:text-right">
           {label}
-          {required && <span className="text-red-500 leading-none" aria-hidden="true">*</span>}
+          {required && <span className="text-red-500 md: leading-none" aria-hidden="true">*</span>}
         </label>
       )}
 
@@ -426,13 +426,13 @@ function RoleOption({ selected, onClick, title, description, icon }: RoleOptionP
         <div className="min-w-0 pe-6">
           <p
             className={cn(
-              'text-[15px] sm:text-[16px] font-semibold leading-snug capitalize transition-colors duration-200',
+              'text-[15px] sm:text-[16px] font-semibold md: leading-snug capitalize transition-colors duration-200',
               selected ? 'text-[color:var(--dark)]' : 'text-[color:var(--dark)]/70'
             )}
           >
             {title}
           </p>
-          <p className="mt-1 text-[13px] sm:text-[14px] font-normal leading-relaxed text-[color:var(--dark)]/45">
+          <p className="mt-1 text-[13px] sm:text-[14px] font-normal md: leading-relaxed text-[color:var(--dark)]/45">
             {description}
           </p>
         </div>
@@ -661,10 +661,10 @@ export default function SignUpClient() {
 
             {/* Heading */}
             <div className="mb-6 sm:mb-7">
-              <h1 className="text-[color:var(--dark)] font-bold text-[26px] sm:text-[30px] leading-tight tracking-tight ltr:text-left rtl:text-right">
+              <h1 className="text-[color:var(--dark)] font-bold text-[26px] sm:text-[30px] md: leading-tight tracking-tight ltr:text-left rtl:text-right">
                 {t('title')}
               </h1>
-              <p className="mt-2 text-[color:var(--dark)]/55 text-[14px] sm:text-[15px] leading-relaxed ltr:text-left rtl:text-right">
+              <p className="mt-2 text-[color:var(--dark)]/55 text-[14px] sm:text-[15px] md: leading-relaxed ltr:text-left rtl:text-right">
                 {t('subtitle')}
               </p>
             </div>

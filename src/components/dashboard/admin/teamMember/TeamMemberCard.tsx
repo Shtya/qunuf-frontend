@@ -74,7 +74,7 @@ export function TeamMemberCard({
 
       {/* Identity */}
       <div className="space-y-1 text-center">
-        <h3 className="text-dark font-bold text-lg leading-tight">{name}</h3>
+        <h3 className="text-dark font-bold text-lg md: leading-tight">{name}</h3>
         <p className="text-xs font-semibold text-secondary uppercase tracking-wider">{job}</p>
       </div>
 
@@ -108,7 +108,7 @@ export function TeamMemberCard({
 
       {/* Description - Trimmed for UI consistency */}
       {description && (
-        <p className="text-sm text-dark/60 text-center mt-2 line-clamp-3 leading-relaxed border-t border-gray/5 pt-3 w-full italic">
+        <p className="text-sm text-dark/60 text-center mt-2 line-clamp-3 md: leading-relaxed border-t border-gray/5 pt-3 w-full italic">
           "{description}"
         </p>
       )}

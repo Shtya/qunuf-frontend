@@ -129,7 +129,7 @@ function DepartmentSection({
 
                 {/* Title */}
                 <h3
-                    className={`text-secondary text-2xl md:text-3xl font-bold leading-snug mb-5 ${isArabic ? "text-right font-arabic" : "text-left"}`}
+                    className={`text-secondary text-2xl md:text-3xl font-bold md: leading-snug mb-5 ${isArabic ? "text-right font-arabic" : "text-left"}`}
                 >
                     {title}
                 </h3>
@@ -142,7 +142,7 @@ function DepartmentSection({
 
                 {/* Description */}
                 <p
-                    className={`text-gray-500 text-base md:text-[17px] leading-[1.85] ${isArabic ? "text-right font-arabic" : "text-left"}`}
+                    className={`text-gray-500 text-base md:text-[17px] md: leading-[1.85] ${isArabic ? "text-right font-arabic" : "text-left"}`}
                 >
                     {text}
                 </p>
@@ -178,7 +178,7 @@ function SectionHeader({
             </div>
 
             {/* Headline */}
-            <h2 className="text-3xl md:text-4xl text-secondary leading-tight">
+            <h2 className="text-3xl md:text-4xl text-secondary md: leading-tight">
                 <span className="font-light">{t("meetOur")}</span>{" "}
                 <span className="font-extrabold">{t("department")}</span>
             </h2>

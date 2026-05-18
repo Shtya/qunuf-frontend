@@ -100,7 +100,7 @@ export default function DashboardCard({
                                 "min-w-0 flex-1",
                                 "text-start",                      // ← direction-aware
                                 "font-bold text-lg md:text-xl",
-                                "text-dark leading-snug tracking-tight",
+                                "text-dark md: leading-snug tracking-tight",
                                 "line-clamp-1",
                             ].join(" ")}
                         >

@@ -522,7 +522,7 @@ export default function Header() {
                     aria-hidden="true"
                   />
                 </div>
-                <div className="hidden lg:flex flex-col items-start leading-tight">
+                <div className="hidden lg:flex flex-col items-start md: leading-tight">
                   <span className="text-[13px] font-semibold text-slate-800 max-w-[110px] truncate">
                     {user.name}
                   </span>

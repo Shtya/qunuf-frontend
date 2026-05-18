@@ -157,7 +157,7 @@ function TeamMemberCard({
                     aria-hidden="true"
                     className={`absolute top-4 ${isArabic ? "left-4" : "right-4"}`}
                 >
-                    <span className="font-['Playfair_Display'] italic text-white/50 text-3xl font-bold leading-none select-none">
+                    <span className="font-['Playfair_Display'] italic text-white/50 text-3xl font-bold md: leading-none select-none">
                         {ordinal}
                     </span>
                 </div>
@@ -172,7 +172,7 @@ function TeamMemberCard({
                 />
 
                 {/* Name */}
-                <h3 className="font-['Playfair_Display'] font-normal text-2xl md:text-3xl leading-tight text-secondary mb-3">
+                <h3 className="font-['Playfair_Display'] font-normal text-2xl md:text-3xl md: leading-tight text-secondary mb-3">
                     {name}
                 </h3>
 
@@ -188,7 +188,7 @@ function TeamMemberCard({
                 />
 
                 {/* Description */}
-                <p className="text-sm md:text-[15px] leading-relaxed text-gray-500 line-clamp-4">
+                <p className="text-sm md:text-[15px] md: leading-relaxed text-gray-500 line-clamp-4">
                     {description}
                 </p>
             </div>

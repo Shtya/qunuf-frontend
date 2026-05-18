@@ -159,7 +159,7 @@ export default function ContactUsSection() {
             className="
               text-3xl sm:text-4xl lg:text-5xl xl:text-[52px]
               font-bold text-dark
-              leading-tight tracking-tight
+              md: leading-tight tracking-tight
               max-w-[520px]
             "
           >
@@ -171,7 +171,7 @@ export default function ContactUsSection() {
             className="
               text-sm sm:text-base
               text-dark/70
-              leading-relaxed
+              md: leading-relaxed
               max-w-[460px]
             "
           >
@@ -245,7 +245,7 @@ export default function ContactUsSection() {
           </form>
 
           {/* Trust note */}
-          <p className="text-xs text-dark/45 max-w-[360px] leading-relaxed">
+          <p className="text-xs text-dark/45 max-w-[360px] md: leading-relaxed">
             {t("privacyNote")}
           </p>
         </div>

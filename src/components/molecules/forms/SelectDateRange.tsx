@@ -103,7 +103,7 @@ const DefaultDateInputComponent: React.FC<DateInputShowComponentProps> = ({
             <div className="w-[45px] h-[45px] bg-secondary rounded-md flex items-center justify-center">
                 <FiCalendar size={26} className="text-white" />
             </div>
-            <div className="flex-1 text-center text-placeholder font-normal text-[16px] leading-[170%]">
+            <div className="flex-1 text-center text-placeholder font-normal text-[16px] md: leading-[170%]">
                 {placeholder}
             </div>
         </button>

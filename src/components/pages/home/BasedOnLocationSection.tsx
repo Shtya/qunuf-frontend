@@ -141,7 +141,7 @@ function PropertyCardPreview({
           </div>
 
           {/* Title */}
-          <p className="font-bold text-base lg:text-lg text-dark leading-snug truncate whitespace-nowrap group-hover:text-primary transition-colors duration-150">
+          <p className="font-bold text-base lg:text-lg text-dark md: leading-snug truncate whitespace-nowrap group-hover:text-primary transition-colors duration-150">
             {property.title}
           </p>
 
@@ -238,12 +238,12 @@ export default function BasedOnLocationSection() {
 
           <h2
             id="location-section-title"
-            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-dark leading-tight tracking-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-dark md: leading-tight tracking-tight"
           >
             {t('title')}
           </h2>
 
-          <p className="text-sm sm:text-base text-dark/60 leading-relaxed max-w-2xl">
+          <p className="text-sm sm:text-base text-dark/60 md: leading-relaxed max-w-2xl">
             {t('description')}
           </p>
         </div>
@@ -301,7 +301,7 @@ export default function BasedOnLocationSection() {
               </div>
 
               <h3 className="text-lg font-bold text-dark">{t('empty.title')}</h3>
-              <p className="text-gray-400 mt-2 max-w-xs text-sm leading-relaxed">
+              <p className="text-gray-400 mt-2 max-w-xs text-sm md: leading-relaxed">
                 {t('empty.description')}
               </p>
             </div>

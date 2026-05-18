@@ -129,7 +129,7 @@ function PropertyCard({
 
         <Link
           href={`/properties/${slug}`}
-          className="block font-bold text-lg sm:text-xl text-white leading-snug hover:text-secondary transition-colors duration-150 line-clamp-2"
+          className="block font-bold text-lg sm:text-xl text-white md: leading-snug hover:text-secondary transition-colors duration-150 line-clamp-2"
         >
           {title}
         </Link>
@@ -256,10 +256,10 @@ export default function RecentPropertiesSection() {
               </span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-dark leading-tight tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-dark md: leading-tight tracking-tight">
               {t('title')}
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-dark/60 leading-relaxed max-w-lg">
+            <p className="mt-3 text-sm sm:text-base text-dark/60 md: leading-relaxed max-w-lg">
               {t('description')}
             </p>
           </div>
@@ -304,7 +304,7 @@ export default function RecentPropertiesSection() {
               <h3 className="text-lg font-bold text-dark">
                 {t('empty.title')}
               </h3>
-              <p className="mt-2 text-sm text-gray-400 max-w-xs leading-relaxed">
+              <p className="mt-2 text-sm text-gray-400 max-w-xs md: leading-relaxed">
                 {t('empty.description')}
               </p>
             </div>

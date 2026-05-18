@@ -112,7 +112,7 @@ export default function StatCard({
                     {/* Label */}
                     <h3
                         className={[
-                            "text-sm md:text-base font-semibold leading-snug",
+                            "text-sm md:text-base font-semibold md: leading-snug",
                             "text-dark/70 group-hover:text-dark",
                             "text-start",           // direction-aware
                             "transition-colors duration-200",
@@ -137,7 +137,7 @@ export default function StatCard({
                             "flex-1 min-w-0",
                             "text-start",           // direction-aware
                             "text-3xl md:text-4xl lg:text-[42px]",
-                            "font-bold leading-none tracking-tight",
+                            "font-bold md: leading-none tracking-tight",
                             "text-dark",
                             "tabular-nums",
                         ].join(" ")}

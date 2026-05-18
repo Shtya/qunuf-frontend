@@ -273,7 +273,7 @@ export default function PageHeroSection({
 
                         {/* Heading — word-by-word hover */}
                         <h1
-                            className="text-[1.75rem] sm:text-3xl lg:text-4xl xl:text-[2.75rem] font-bold leading-[1.15] tracking-tight text-dark hero-slide-right"
+                            className="text-[1.75rem] sm:text-3xl lg:text-4xl xl:text-[2.75rem] font-bold md: leading-[1.15] tracking-tight text-dark hero-slide-right"
                             style={{ animationDelay: "0.12s" }}
                         >
                             {title.split(" ").map((word, index) => (
@@ -289,7 +289,7 @@ export default function PageHeroSection({
                         {/* Description */}
                         {description && (
                             <p
-                                className="text-base sm:text-lg leading-relaxed text-input font-medium max-w-md hero-slide-right"
+                                className="text-base sm:text-lg md: leading-relaxed text-input font-medium max-w-md hero-slide-right"
                                 style={{ animationDelay: "0.24s" }}
                             >
                                 {description}

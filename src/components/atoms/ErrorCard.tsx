@@ -66,7 +66,7 @@ export const ErrorCard: React.FC<ErrorCardProps> = ({
                         <h2 className="text-2xl font-bold text-gray-900 tracking-tight">
                             {title || tComman('errorTitle')}
                         </h2>
-                        <p className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-[280px] mx-auto">
+                        <p className="text-sm sm:text-base text-gray-500 md: leading-relaxed max-w-[280px] mx-auto">
                             {message}
                         </p>
                     </div>

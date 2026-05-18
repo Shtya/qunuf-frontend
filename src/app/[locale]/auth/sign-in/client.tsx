@@ -39,7 +39,7 @@ function Logo({ className, small = false }: { className?: string; small?: boolea
 
   return (
     <Link href="/" className={cn('flex items-center flex-shrink-0', className)}>
-      <span className={cn(textSize, 'font-extrabold text-primary tracking-tight leading-none')}>
+      <span className={cn(textSize, 'font-extrabold text-primary tracking-tight md: leading-none')}>
         {t('logo')}
       </span>
     </Link>
@@ -217,7 +217,7 @@ function TextInput({
         <label className="text-sm font-semibold text-[color:var(--input)] flex items-center gap-1 select-none ltr:text-left rtl:text-right">
           {label}
           {required && (
-            <span className="text-red-500 leading-none" aria-hidden="true">
+            <span className="text-red-500 md: leading-none" aria-hidden="true">
               *
             </span>
           )}
@@ -327,7 +327,7 @@ function PasswordInput({
         <label className="text-sm font-semibold text-[color:var(--input)] flex items-center gap-1 select-none ltr:text-left rtl:text-right">
           {label}
           {required && (
-            <span className="text-red-500 leading-none" aria-hidden="true">
+            <span className="text-red-500 md: leading-none" aria-hidden="true">
               *
             </span>
           )}
@@ -585,10 +585,10 @@ export default function SignInClient() {
 
             {/* Heading */}
             <div className="mb-7 sm:mb-8">
-              <h1 className="text-[color:var(--dark)] font-bold text-[28px] sm:text-[32px] leading-tight tracking-tight ltr:text-left rtl:text-right">
+              <h1 className="text-[color:var(--dark)] font-bold text-[28px] sm:text-[32px] md: leading-tight tracking-tight ltr:text-left rtl:text-right">
                 {t('title')}
               </h1>
-              <p className="mt-2 text-[color:var(--dark)]/55 text-[15px] sm:text-[16px] leading-relaxed ltr:text-left rtl:text-right">
+              <p className="mt-2 text-[color:var(--dark)]/55 text-[15px] sm:text-[16px] md: leading-relaxed ltr:text-left rtl:text-right">
                 {t('subtitle')}
               </p>
             </div>

@@ -148,7 +148,7 @@ function NotificationMenu({ isOpen, onClose }: MenuProps) {
                                 {/* Content */}
                                 <div className="flex-1 min-w-0">
                                     <div className="flex items-start justify-between gap-2 mb-1">
-                                        <h2 className={`text-sm leading-tight ${!item.isRead
+                                        <h2 className={`text-sm md: leading-tight ${!item.isRead
                                             ? 'font-bold text-dark'
                                             : 'font-medium text-dark/60'
                                             }`}>
@@ -161,7 +161,7 @@ function NotificationMenu({ isOpen, onClose }: MenuProps) {
                                             </span>
                                         )}
                                     </div>
-                                    <p className="text-xs text-dark/60 line-clamp-2 leading-relaxed">
+                                    <p className="text-xs text-dark/60 line-clamp-2 md: leading-relaxed">
                                         {item.message}
                                     </p>
                                 </div>

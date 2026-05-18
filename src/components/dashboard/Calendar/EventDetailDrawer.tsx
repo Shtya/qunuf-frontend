@@ -129,7 +129,7 @@ export function EventDetailDrawer({ event, onClose, onEdit, onDelete, onRefresh 
                         </span>
                     </div>
                     <div className="flex-1 min-w-0">
-                        <p className="text-[14px] font-bold text-dark leading-tight line-clamp-2">
+                        <p className="text-[14px] font-bold text-dark md: leading-tight line-clamp-2">
                             {event.title}
                         </p>
                         <span

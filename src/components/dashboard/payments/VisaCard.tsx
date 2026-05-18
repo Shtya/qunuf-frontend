@@ -32,7 +32,7 @@ export default function VisaCard() {
                         <span className="text-primary font-bold">VISA</span>
                     </div>
                     <div className="flex flex-col gap-1">
-                        <p className="text-base font-semibold text-dark leading-tight">Visa</p>
+                        <p className="text-base font-semibold text-dark md: leading-tight">Visa</p>
                         <p className="text-sm text-input">•••• •••• •••• 4242</p>
                         <p className="text-sm text-placeholder">{t('card.expires')} 12/25 • {cardHolder}</p>
                     </div>

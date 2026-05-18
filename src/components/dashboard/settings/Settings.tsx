@@ -69,10 +69,10 @@ export function SettingsCard({
 
       {/* Text */}
       <div className="flex flex-col gap-1">
-        <h3 className="text-base font-bold text-[var(--dark)] leading-snug">
+        <h3 className="text-base font-bold text-[var(--dark)] md: leading-snug">
           {title}
         </h3>
-        <p className="text-sm text-[var(--placeholder)] leading-relaxed">
+        <p className="text-sm text-[var(--placeholder)] md: leading-relaxed">
           {description}
         </p>
       </div>
@@ -151,7 +151,7 @@ export default function Settings() {
     <div className="flex flex-col gap-8 px-1">
       {/* Page heading */}
       <div className="flex flex-col gap-1">
-        <h1 className="text-2xl sm:text-3xl font-bold text-[var(--dark)] leading-tight">
+        <h1 className="text-2xl sm:text-3xl font-bold text-[var(--dark)] md: leading-tight">
           {t("account")}
         </h1>
         <p className="text-sm text-[var(--placeholder)]">

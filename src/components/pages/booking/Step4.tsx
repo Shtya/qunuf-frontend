@@ -48,13 +48,13 @@ export default function Step4() {
 
                 {/* Summary Card */}
                 <div className="bg-lighter rounded-xl shadow-sm px-6 py-5 max-w-xl mx-auto text-center space-y-4">
-                    <p className="text-dark text-lg sm:text-xl font-medium leading-snug">
+                    <p className="text-dark text-lg sm:text-xl font-medium md: leading-snug">
                         {t('message.line1')}
                     </p>
-                    <p className="text-dark text-lg sm:text-xl font-medium leading-snug">
+                    <p className="text-dark text-lg sm:text-xl font-medium md: leading-snug">
                         {t('message.line2')}
                     </p>
-                    <p className="text-dark text-lg sm:text-xl font-medium leading-snug">
+                    <p className="text-dark text-lg sm:text-xl font-medium md: leading-snug">
                         {t('message.line3')}
                     </p>
                 </div>

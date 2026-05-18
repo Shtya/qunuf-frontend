@@ -398,7 +398,7 @@ function NotificationMenu({ isOpen, onClose }: MenuProps) {
 							<BsBell className="w-4 h-4 text-primary" />
 						</div>
 						<div>
-							<p className="text-[13px] font-bold text-dark leading-tight">{t('title')}</p>
+							<p className="text-[13px] font-bold text-dark md: leading-tight">{t('title')}</p>
 							<p className="text-[11px] text-dark/38 mt-0.5">
 								{unread > 0 ? t('unreadCount', { count: unread }) : t('allRead')}
 							</p>
@@ -441,7 +441,7 @@ function NotificationMenu({ isOpen, onClose }: MenuProps) {
 						</span>
 						<div className="flex-1 min-w-0">
 							<div className="flex items-start justify-between gap-2 mb-1">
-								<h3 className={cn('text-[13px] leading-snug',
+								<h3 className={cn('text-[13px] md: leading-snug',
 									!item.isRead ? 'font-semibold text-dark' : 'font-medium text-dark/50')}>
 									{item.title}
 								</h3>
@@ -450,7 +450,7 @@ function NotificationMenu({ isOpen, onClose }: MenuProps) {
                     shadow-[0_0_6px_2px] shadow-primary/40" />
 								)}
 							</div>
-							<p className="text-xs text-dark/44 line-clamp-2 leading-relaxed">{item.message}</p>
+							<p className="text-xs text-dark/44 line-clamp-2 md: leading-relaxed">{item.message}</p>
 						</div>
 					</button>
 				)) : (
@@ -565,7 +565,7 @@ function DashboardSidebar({ isMobile = false, onClose }: DashboardSidebarProps) 
 						</Link>
 						<div className="flex-1 min-w-0">
 							<Link href="/dashboard/settings/account" onClick={() => onClose?.()}>
-								<p className="text-[13px] font-semibold text-dark truncate hover:text-primary transition-colors leading-tight">
+								<p className="text-[13px] font-semibold text-dark truncate hover:text-primary transition-colors md: leading-tight">
 									{user?.name || t('defaultUser')}
 								</p>
 								<p className="text-[11px] text-dark/38 truncate mt-0.5">
@@ -750,7 +750,7 @@ export function DashboardHeader({ onOpenSidebar }: { onOpenSidebar: () => void }
 
 					{/* Center: greeting */}
 					{user?.role && <div className="flex-1 min-w-0 px-2">
-						<p className="text-[13px] font-bold text-dark truncate leading-tight">
+						<p className="text-[13px] font-bold text-dark truncate md: leading-tight">
 							{t('greeting', { name: user?.name })}
 						</p> 
 						<span className={cn(
@@ -803,7 +803,7 @@ export function DashboardHeader({ onOpenSidebar }: { onOpenSidebar: () => void }
 					{/* Left: greeting */}
 					<div className="flex items-center gap-3 flex-1 min-w-0">
 						<div className="min-w-0">
-							<h1 className="text-[17px] font-bold text-dark truncate leading-tight tracking-tight">
+							<h1 className="text-[17px] font-bold text-dark truncate md: leading-tight tracking-tight">
 								{t('greeting', { name: user?.name?.split(' ')[0] || '' })}
 							</h1>
 							<p className="text-[12px] text-dark/38 font-medium mt-0.5 truncate">
@@ -848,7 +848,7 @@ export function DashboardHeader({ onOpenSidebar }: { onOpenSidebar: () => void }
 							<div className="flex items-center gap-2.5 ps-2.5 pe-1.5 py-1.5 rounded-xl
                 bg-black/[0.032] border border-black/6
                 shadow-[inset_0_1px_0_rgba(255,255,255,0.55),0_1px_3px_rgba(0,0,0,0.04)]">
-								<div className="hidden md:flex flex-col items-start rtl:items-end leading-none gap-1">
+								<div className="hidden md:flex flex-col items-start rtl:items-end md: leading-none gap-1">
 									<span className="text-[13px] font-bold text-dark truncate max-w-[115px]">{user.name}</span>
 									<span className={cn('text-[10px] font-bold px-2 py-0.5 rounded-md border tracking-wide uppercase',
 										tokens.badge)}>

@@ -146,7 +146,7 @@ export default function WorkOrderDetailsPopup({ workOrder: initialWorkOrder, onC
                 {/* Title + status badge */}
                 <div className="flex items-start justify-between gap-4">
                     <div className="min-w-0">
-                        <h2 className="text-base font-bold text-[var(--dark)] leading-snug">{wo.title}</h2>
+                        <h2 className="text-base font-bold text-[var(--dark)] md: leading-snug">{wo.title}</h2>
                         {wo.description && (
                             <p className="text-sm text-gray-500 mt-1">{wo.description}</p>
                         )}

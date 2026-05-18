@@ -84,12 +84,12 @@ export default function PropertyCategorySection() {
 
 							<h2
 								id="category-section-title"
-								className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-dark leading-tight tracking-tight"
+								className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-dark md: leading-tight tracking-tight"
 							>
 								{t('title')}
 							</h2>
 
-							<p className="mt-3 text-sm sm:text-base text-dark/60 leading-relaxed max-w-2xl">
+							<p className="mt-3 text-sm sm:text-base text-dark/60 md: leading-relaxed max-w-2xl">
 								{t('description')}
 							</p>
 						</div>

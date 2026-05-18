@@ -108,13 +108,13 @@ function HeroBlogCard({ blog }: { blog: ViewBlog }) {
                 {/* Title — serif */}
                 <Link
                     href={`/blogs/${blog.slug}`}
-                    className="font-serif text-2xl font-bold leading-tight tracking-tight text-dark transition-colors duration-300 hover:text-secondary focus-visible:outline-none focus-visible:underline md:text-3xl lg:text-4xl"
+                    className="font-serif text-2xl font-bold md: leading-tight tracking-tight text-dark transition-colors duration-300 hover:text-secondary focus-visible:outline-none focus-visible:underline md:text-3xl lg:text-4xl"
                 >
                     {title}
                 </Link>
 
                 {/* Description */}
-                <div className="line-clamp-4 text-sm leading-relaxed text-grey-dark/70 md:text-base">
+                <div className="line-clamp-4 text-sm md: leading-relaxed text-grey-dark/70 md:text-base">
                     <RichTextRenderer content={description} className="prose prose-sm max-w-none" />
                 </div>
 
@@ -215,7 +215,7 @@ function GridBlogCard({ blog }: { blog: ViewBlog }) {
                 <Link
                     href={`/blogs/${blog.slug}`}
                     className={cn(
-                        'line-clamp-2 font-serif text-lg font-bold leading-snug text-dark',
+                        'line-clamp-2 font-serif text-lg font-bold md: leading-snug text-dark',
                         'transition-colors duration-300 hover:text-secondary',
                         'focus-visible:outline-none focus-visible:underline'
                     )}
@@ -224,7 +224,7 @@ function GridBlogCard({ blog }: { blog: ViewBlog }) {
                 </Link>
 
                 {/* Description */}
-                <div className="line-clamp-3 text-sm leading-relaxed text-grey-dark/65">
+                <div className="line-clamp-3 text-sm md: leading-relaxed text-grey-dark/65">
                     <RichTextRenderer content={description} className="prose prose-sm max-w-none" />
                 </div>
 

@@ -79,7 +79,7 @@ export default function DepartmentCard({
                 </h3>
 
                 {description && (
-                    <p className="text-dark/70 text-sm md:text-base leading-relaxed line-clamp-3">
+                    <p className="text-dark/70 text-sm md:text-base md: leading-relaxed line-clamp-3">
                         {description}
                     </p>
                 )}

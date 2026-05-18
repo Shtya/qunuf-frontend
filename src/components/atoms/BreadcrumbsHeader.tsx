@@ -103,7 +103,7 @@ export default function BreadcrumbsHeader({
           aria-hidden
         />
 
-        <h1 className="text-2xl sm:text-3xl font-bold text-[var(--dark)] leading-tight tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-bold text-[var(--dark)] md: leading-tight tracking-tight">
           {title}
         </h1>
       </div>

@@ -59,7 +59,7 @@ export default function BlogContentCard({ block, onEdit, onDelete }: BlogContent
                             <span>{formattedDate}</span>
                         </div>
 
-                        <h2 className="font-bold text-2xl sm:text-3xl text-dark group-hover:text-primary transition-colors duration-200 line-clamp-2 leading-tight">
+                        <h2 className="font-bold text-2xl sm:text-3xl text-dark group-hover:text-primary transition-colors duration-200 line-clamp-2 md: leading-tight">
                             {title}
                         </h2>
                     </div>
@@ -81,7 +81,7 @@ export default function BlogContentCard({ block, onEdit, onDelete }: BlogContent
                     >
                         <RichTextRenderer
                             content={description}
-                            className="text-base sm:text-lg text-dark/70 leading-relaxed"
+                            className="text-base sm:text-lg text-dark/70 md: leading-relaxed"
                         />
 
                         {/* The Fade Gradient: Only show when collapsed to signal more content */}

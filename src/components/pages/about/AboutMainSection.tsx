@@ -129,7 +129,7 @@ export default function AboutMainSection({
 
         {/* Title */}
         <h2
-          className="font-extrabold leading-[1.15] text-[28px] md:text-[36px] xl:text-[42px]"
+          className="font-extrabold md: leading-[1.15] text-[28px] md:text-[36px] xl:text-[42px]"
           style={{ color: "var(--primary)" }}
         >
           {title}
@@ -153,7 +153,7 @@ export default function AboutMainSection({
             ].join(" ")}
           >
             <p
-              className="font-medium leading-[1.85] whitespace-pre-line text-[15px] md:text-base"
+              className="font-medium md: leading-[1.85] whitespace-pre-line text-[15px] md:text-base"
               style={{ color: "var(--dark)" }}
             >
               {!hasMore || expanded ? (

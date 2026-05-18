@@ -98,13 +98,13 @@ export default function SwiperNav({
         aria-live="polite"
       >
         <div className="flex items-baseline gap-1 font-mono tabular-nums">
-          <span className="text-sm sm:text-base font-bold text-slate-900 leading-none">
+          <span className="text-sm sm:text-base font-bold text-slate-900 md: leading-none">
             {formatNum(currentPage)}
           </span>
           <span className="text-xs sm:text-sm text-slate-400 font-medium px-0.5">
             /
           </span>
-          <span className="text-xs sm:text-sm font-semibold text-slate-500 leading-none">
+          <span className="text-xs sm:text-sm font-semibold text-slate-500 md: leading-none">
             {formatNum(totalPages)}
           </span>
         </div>

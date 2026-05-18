@@ -148,7 +148,7 @@ export function GoogleConnectModal({ open, onClose }: Props) {
                         <BsGoogle className="w-4 h-4" />
                     </div>
                     <div className="flex-1 min-w-0">
-                        <h2 className="text-[15px] font-bold text-dark leading-tight">{t('title')}</h2>
+                        <h2 className="text-[15px] font-bold text-dark md: leading-tight">{t('title')}</h2>
                         {hasCredentials && (
                             <p className="text-[11px] text-green-600 font-semibold mt-0.5 flex items-center gap-1">
                                 <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block" />
@@ -322,7 +322,7 @@ export function GoogleConnectModal({ open, onClose }: Props) {
                                         <span className="w-6 h-6 rounded-full bg-[#4285F4]/10 text-[#4285F4] text-[11px] font-black flex items-center justify-center shrink-0 mt-0.5">
                                             {i + 1}
                                         </span>
-                                        <span className="text-[12px] text-dark/65 leading-relaxed pt-0.5">{step}</span>
+                                        <span className="text-[12px] text-dark/65 md: leading-relaxed pt-0.5">{step}</span>
                                     </li>
                                 ))}
                             </ol>

@@ -67,7 +67,7 @@ function EmptyNotifications({ label }: { label: string }) {
           />
         </svg>
       </div>
-      <p className="text-sm text-gray-400 font-medium max-w-[200px] leading-relaxed">{label}</p>
+      <p className="text-sm text-gray-400 font-medium max-w-[200px] md: leading-relaxed">{label}</p>
     </div>
   );
 }
@@ -141,7 +141,7 @@ function NotificationRow({
       <div className="flex-1 min-w-0">
         <h4
           className={[
-            "text-sm truncate leading-snug",
+            "text-sm truncate md: leading-snug",
             !notif.isRead
               ? "font-semibold text-gray-900"
               : "font-medium text-gray-500",
@@ -149,7 +149,7 @@ function NotificationRow({
         >
           {notif.title}
         </h4>
-        <p className="mt-0.5 text-xs text-gray-400 truncate leading-relaxed">
+        <p className="mt-0.5 text-xs text-gray-400 truncate md: leading-relaxed">
           {notif.message}
         </p>
       </div>

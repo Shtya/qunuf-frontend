@@ -165,7 +165,7 @@ function LocationInput({ control, name, showAddress = true }: LocationInputProps
                                 {t("addressPrefix") || "Location Address"}
                             </p>
                             <p className={cn(
-                                "text-sm sm:text-base font-medium text-dark leading-relaxed",
+                                "text-sm sm:text-base font-medium text-dark md: leading-relaxed",
                                 loadingAddress && "animate-pulse"
                             )}>
                                 {loadingAddress ? (

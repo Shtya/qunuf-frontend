@@ -161,7 +161,7 @@ export default function ContactGrid() {
                       </span>
                     </TableCell>
                     <TableCell>
-                      <p className="max-w-[320px] whitespace-pre-wrap text-sm leading-6 text-gray-700">
+                      <p className="max-w-[320px] whitespace-pre-wrap text-sm md: leading-6 text-gray-700">
                         {msg.inquiry || t("notAvailable")}
                       </p>
                     </TableCell>

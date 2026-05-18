@@ -107,7 +107,7 @@ function ImageLightbox({
 			aria-modal="true"
 		>
 			<button
-				className="absolute top-5 end-6 text-white/60 hover:text-white text-5xl leading-none transition-colors focus-visible:outline-none"
+				className="absolute top-5 end-6 text-white/60 hover:text-white text-5xl md: leading-none transition-colors focus-visible:outline-none"
 				onClick={onClose}
 				aria-label="Close"
 			>
@@ -191,7 +191,7 @@ function ImageGallery({ images, userImage, price, title }: ImageGalleryProps) {
 							<p className="text-[10px] font-semibold opacity-55 uppercase tracking-wider mb-0.5">
 								{ar ? 'معروض بواسطة' : 'Listed by'}
 							</p>
-							<p className="text-sm font-bold leading-none">{title}</p>
+							<p className="text-sm font-bold md: leading-none">{title}</p>
 						</div>
 					</div>
 
@@ -200,7 +200,7 @@ function ImageGallery({ images, userImage, price, title }: ImageGalleryProps) {
 						<p className="text-[10px] font-semibold opacity-55 uppercase tracking-wider mb-0.5">
 							{ar ? 'الإيجار' : 'Rent'}
 						</p>
-						<p className="font-bold leading-none">
+						<p className="font-bold md: leading-none">
 							<span className="text-2xl sm:text-3xl">
 								{price.amount.toLocaleString()}
 							</span>
@@ -428,7 +428,7 @@ function SectionHeading({ title, icon }: { title: string; icon?: ReactNode }) {
 					{icon}
 				</span>
 			)}
-			<h2 className="text-xl sm:text-2xl font-bold text-dark leading-tight shrink-0">{title}</h2>
+			<h2 className="text-xl sm:text-2xl font-bold text-dark md: leading-tight shrink-0">{title}</h2>
 			<div className="flex-1 h-px bg-gradient-to-r from-secondary/20 to-transparent" />
 		</div>
 	);
@@ -450,8 +450,8 @@ function StatPill({
 		)}>
 			<span className="text-secondary text-lg shrink-0">{icon}</span>
 			<div>
-				<p className="text-[10px] font-bold uppercase tracking-widest opacity-50 leading-none mb-1">{label}</p>
-				<p className="text-sm font-bold leading-none">{value}</p>
+				<p className="text-[10px] font-bold uppercase tracking-widest opacity-50 md: leading-none mb-1">{label}</p>
+				<p className="text-sm font-bold md: leading-none">{value}</p>
 			</div>
 		</div>
 	);
@@ -488,7 +488,7 @@ function NearbyList({ items }: { items: NearbyItem[] }) {
 					key={idx}
 					className="flex items-center justify-between gap-4 py-4 first:pt-0 last:pb-0 -mx-2 px-2 hover:bg-gray-50/70 rounded-xl transition-colors duration-150"
 				>
-					<span className="text-sm sm:text-base font-medium text-dark leading-snug">{name}</span>
+					<span className="text-sm sm:text-base font-medium text-dark md: leading-snug">{name}</span>
 					{distance && (
 						<span className="inline-flex items-center gap-1.5 text-xs font-bold text-secondary bg-secondary/8 border border-secondary/15 px-3 py-1.5 rounded-full shrink-0">
 							<IoIosPin size={12} />
@@ -606,7 +606,7 @@ export default function PropertyDetails({ property }: { property: Property }) {
 					</div>
 
 					{/* Title */}
-					<h1 className="text-2xl sm:text-3xl lg:text-[38px] font-bold text-dark leading-tight mb-3 break-words">
+					<h1 className="text-2xl sm:text-3xl lg:text-[38px] font-bold text-dark md: leading-tight mb-3 break-words">
 						{property.name}
 					</h1>
 
@@ -652,7 +652,7 @@ export default function PropertyDetails({ property }: { property: Property }) {
 								{ar ? 'سعر الإيجار' : 'Rent Price'}
 							</p>
 							<div className="flex items-baseline gap-2">
-								<span className="text-3xl sm:text-4xl font-bold text-secondary leading-none">
+								<span className="text-3xl sm:text-4xl font-bold text-secondary md: leading-none">
 									{property.rentPrice.toLocaleString()}
 								</span>
 								<span className="text-sm text-gray-400 font-medium">
@@ -669,7 +669,7 @@ export default function PropertyDetails({ property }: { property: Property }) {
 					<Card>
 						<CardAccent />
 						<SectionHeading title={t('description')} />
-						<div className="space-y-4 text-gray-500 text-sm sm:text-[15px] leading-[1.9]">
+						<div className="space-y-4 text-gray-500 text-sm sm:text-[15px] md: leading-[1.9]">
 							{description.map((para, idx) => <p key={idx}>{para}</p>)}
 						</div>
 					</Card>
@@ -689,10 +689,10 @@ export default function PropertyDetails({ property }: { property: Property }) {
 									<span className="text-secondary text-xl group-hover:scale-110 transition-transform duration-200 w-fit">
 										{icon}
 									</span>
-									<p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest leading-none">
+									<p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest md: leading-none">
 										{label}
 									</p>
-									<p className="text-base font-bold text-dark leading-none">{value}</p>
+									<p className="text-base font-bold text-dark md: leading-none">{value}</p>
 								</div>
 							))}
 						</div>
@@ -723,7 +723,7 @@ export default function PropertyDetails({ property }: { property: Property }) {
 					<Card>
 						<CardAccent />
 						<SectionHeading title={t('additionalDetails')} />
-						<div className="space-y-4 text-gray-500 text-sm sm:text-[15px] leading-[1.9]">
+						<div className="space-y-4 text-gray-500 text-sm sm:text-[15px] md: leading-[1.9]">
 							{additionalDetails.map((para, idx) => <p key={idx}>{para}</p>)}
 						</div>
 					</Card>
@@ -779,7 +779,7 @@ export default function PropertyDetails({ property }: { property: Property }) {
 						<p className="text-[11px] font-bold uppercase tracking-widest text-white/30 mb-2 select-none">
 							{ar ? 'هل أنت مستعد للانتقال؟' : 'Ready to move in?'}
 						</p>
-						<p className="text-xl sm:text-2xl font-bold text-white leading-tight break-words">
+						<p className="text-xl sm:text-2xl font-bold text-white md: leading-tight break-words">
 							{property.name}
 						</p>
 						<p className="text-sm text-white/40 mt-1.5 font-medium">

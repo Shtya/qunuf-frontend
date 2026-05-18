@@ -146,11 +146,11 @@ export default function EmptyState({
 
                     {/* Text */}
                     <div className="mb-7 flex flex-col items-center gap-2.5 text-center">
-                        <h2 className="text-xl font-bold leading-tight tracking-tight text-dark md:text-2xl">
+                        <h2 className="text-xl font-bold md: leading-tight tracking-tight text-dark md:text-2xl">
                             {title}
                         </h2>
                         {message && (
-                            <p className="max-w-xs text-sm leading-relaxed text-dark/55 md:text-base">
+                            <p className="max-w-xs text-sm md: leading-relaxed text-dark/55 md:text-base">
                                 {message}
                             </p>
                         )}

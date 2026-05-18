@@ -54,7 +54,7 @@ export default function DashboardHeader({ onOpenSidebar }: { onOpenSidebar: () =
 
 						{/* Greeting Section */}
 						<div className="space-y-0.5">
-							<h1 className="text-xl sm:text-2xl md:text-[32px] font-bold text-dark leading-tight bg-gradient-to-r from-dark to-dark/80 bg-clip-text">
+							<h1 className="text-xl sm:text-2xl md:text-[32px] font-bold text-dark md: leading-tight bg-gradient-to-r from-dark to-dark/80 bg-clip-text">
 								{t('greeting', { name: user?.name?.split(' ')[0] || "There" })}
 							</h1>
 							<p className="hidden sm:block text-sm md:text-base text-dark/60 font-medium">
@@ -103,7 +103,7 @@ export default function DashboardHeader({ onOpenSidebar }: { onOpenSidebar: () =
 								{/* Profile Card */}
 								<div className="relative flex items-center gap-3 ps-4 py-2 pe-2 border-s border-gray/10 bg-gradient-to-r from-transparent to-secondary/5 rounded-r-2xl group-hover:to-secondary/10 transition-all duration-300">
 									{/* User Info - Desktop */}
-									<div className="hidden md:flex flex-col items-end leading-tight">
+									<div className="hidden md:flex flex-col items-end md: leading-tight">
 										<span className="text-sm font-bold text-dark truncate max-w-[120px] group-hover:text-primary transition-colors duration-200">
 											{user.name}
 										</span>

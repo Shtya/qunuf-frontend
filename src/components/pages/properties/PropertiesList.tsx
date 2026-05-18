@@ -961,7 +961,7 @@ function PropertyCardGrid({
 					</div>
 
 					{/* Title */}
-					<h3 className="font-bold text-base lg:text-lg text-gray-900 leading-snug truncate group-hover:text-primary transition-colors duration-150">
+					<h3 className="font-bold text-base lg:text-lg text-gray-900 md: leading-snug truncate group-hover:text-primary transition-colors duration-150">
 						{property.name}
 					</h3>
 
@@ -1055,7 +1055,7 @@ function EmptyStateResult() {
 				<LuSearchX size={28} className="text-gray-400" />
 			</div>
 			<h3 className="text-lg font-bold text-gray-900">{t('grid.emptyTitle')}</h3>
-			<p className="text-gray-400 mt-2 max-w-sm text-sm leading-relaxed">
+			<p className="text-gray-400 mt-2 max-w-sm text-sm md: leading-relaxed">
 				{t('grid.emptyMessage')}
 			</p>
 		</div>

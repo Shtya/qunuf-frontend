@@ -215,7 +215,7 @@ function DangerConfirmPopup({
             {note && (
                 <div className="mx-6 mt-5 flex gap-2.5 p-3.5 bg-orange-50 border border-orange-200 rounded-xl">
                     <LucideInfo size={15} className="text-orange-500 shrink-0 mt-0.5" />
-                    <p className="text-xs text-orange-700 leading-relaxed">{note}</p>
+                    <p className="text-xs text-orange-700 md: leading-relaxed">{note}</p>
                 </div>
             )}
 
@@ -348,7 +348,7 @@ export function ReviseContractPopup({ row: contract, onClose, fetchRows }: Contr
                                 </span>
                             </div>
                             <div className="p-4 bg-[var(--highlight)] rounded-xl border border-[var(--gray)] h-[290px] overflow-y-auto custom-scrollbar">
-                                <p className="text-sm leading-relaxed whitespace-pre-wrap">
+                                <p className="text-sm md: leading-relaxed whitespace-pre-wrap">
                                     {termsDiff.map((part: Change, i: number) => (
                                         <span
                                             key={i}

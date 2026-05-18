@@ -70,7 +70,7 @@ export default function PropertyCategoryCard({
 
 				<Link
 					href={`/properties/${property.slug}`}
-					className="block text-lg sm:text-xl font-bold text-dark leading-tight hover:text-secondary transition-colors duration-200 truncate whitespace-nowrap"				>
+					className="block text-lg sm:text-xl font-bold text-dark md: leading-tight hover:text-secondary transition-colors duration-200 truncate whitespace-nowrap"				>
 					{property.title}
 				</Link>
 

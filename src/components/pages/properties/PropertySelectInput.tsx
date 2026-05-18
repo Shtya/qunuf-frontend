@@ -46,7 +46,7 @@ export default function PropertySelectInput({
                 className="flex items-center justify-between rounded-md  p-[10px] gap-2 cursor-pointer  bg-white border border-lightGold"
             >
                 {/* Text */}
-                <span className="font-normal text-[16px] leading-[20px] text-placeholder">
+                <span className="font-normal text-[16px] md: leading-[20px] text-placeholder">
                     {value?.label ?? fallbackValue?.label ?? placeholder}
                 </span>
 

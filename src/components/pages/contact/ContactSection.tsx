@@ -133,13 +133,13 @@ function ContactForm() {
           {t("eyebrow")}
         </span>
         <h1
-          className="font-bold text-[30px] sm:text-[38px] leading-[1.1] mb-2"
+          className="font-bold text-[30px] sm:text-[38px] md: leading-[1.1] mb-2"
           style={{ color: "var(--primary)" }}
         >
           {t("getIn")}{" "}
           <span style={{ color: "var(--secondary)" }}>{t("touch")}</span>
         </h1>
-        <p className="text-[13px] leading-relaxed" style={{ color: "var(--placeholder)" }}>
+        <p className="text-[13px] md: leading-relaxed" style={{ color: "var(--placeholder)" }}>
           {t("headerMessage")}
         </p>
       </div>
@@ -284,13 +284,13 @@ function MapPanel() {
           {t("map.eyebrow")}
         </p>
         <h2
-          className="font-bold text-[24px] sm:text-[28px] leading-[1.2] mb-3"
+          className="font-bold text-[24px] sm:text-[28px] md: leading-[1.2] mb-3"
           style={{ color: "var(--lighter)" }}
         >
           {t("map.title")}
         </h2>
         <p
-          className="text-[13px] leading-relaxed"
+          className="text-[13px] md: leading-relaxed"
           style={{ color: "rgba(192,178,131,0.75)" }}
         >
           {t("map.subtitle")}
@@ -432,7 +432,7 @@ function UnderlineTextarea({
           id={id}
           rows={4}
           placeholder={placeholder}
-          className="w-full resize-none bg-transparent border-none outline-none text-[14px] font-medium leading-relaxed placeholder:text-[var(--placeholder)]"
+          className="w-full resize-none bg-transparent border-none outline-none text-[14px] font-medium md: leading-relaxed placeholder:text-[var(--placeholder)]"
           style={{ color: "var(--primary)", caretColor: "var(--secondary)" }}
           {...(props as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
         />

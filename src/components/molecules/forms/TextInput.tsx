@@ -29,7 +29,7 @@ export default function TextInput({
         <label className="text-sm font-semibold text-[color:var(--input)] flex items-center gap-1 select-none ltr:text-left rtl:text-right">
           {label}
           {required && (
-            <span className="text-red-500 leading-none" aria-hidden="true">
+            <span className="text-red-500 md: leading-none" aria-hidden="true">
               *
             </span>
           )}

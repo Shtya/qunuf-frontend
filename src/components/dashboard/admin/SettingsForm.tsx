@@ -216,10 +216,10 @@ export default function SettingsForm() {
             {/* Main Header */}
             <div className="mb-8 border-s-2 border-secondary ps-8 py-2">
                 <div className="flex flex-col gap-1">
-                    <h1 className="text-4xl font-black text-dark tracking-tighter leading-none">
+                    <h1 className="text-4xl font-black text-dark tracking-tighter md: leading-none">
                         {t("title")}
                     </h1>
-                    <p className="text-[15px] font-medium text-dark/40 max-w-xl leading-relaxed">
+                    <p className="text-[15px] font-medium text-dark/40 max-w-xl md: leading-relaxed">
                         {t("description")}
                     </p>
                 </div>
