@@ -6,6 +6,7 @@ import { format } from 'date-fns';
 import { useTranslations } from 'next-intl';
 
 const STATUS_MAP: Record<WorkOrderStatus, { bg: string; text: string; ring: string; dot: string }> = {
+    pending_review: { bg: 'bg-yellow-50', text: 'text-yellow-700', ring: 'ring-yellow-200', dot: 'bg-yellow-500' },
     scheduled:   { bg: 'bg-blue-50',   text: 'text-blue-700',   ring: 'ring-blue-200',   dot: 'bg-blue-500' },
     in_progress: { bg: 'bg-violet-50', text: 'text-violet-700', ring: 'ring-violet-200', dot: 'bg-violet-500' },
     completed:   { bg: 'bg-emerald-50',text: 'text-emerald-700',ring: 'ring-emerald-200',dot: 'bg-emerald-500' },

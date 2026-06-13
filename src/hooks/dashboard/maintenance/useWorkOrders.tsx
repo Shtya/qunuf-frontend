@@ -50,7 +50,7 @@ export function useWorkOrders() {
     };
 
     const createWorkOrder = async (payload: {
-        propertyId: string;
+        propertyId?: string;
         title: string;
         description?: string;
         priority: string;
