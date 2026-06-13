@@ -1,4 +1,4 @@
-{
+﻿{
 	"hero": {
 		"trusted": "موثوق به من قبل الآلاف",
 		"satisfaction": "100% رضا العملاء",
@@ -1651,6 +1651,7 @@
 			"slaHours": "مستوى الخدمة (ساعة)",
 			"statusOptions": {
 				"all": "الكل",
+				"pending_review": "قيد المراجعة",
 				"scheduled": "مجدول",
 				"pending_provider_confirmation": "مجدول",
 				"in_progress": "قيد التنفيذ",
@@ -1683,6 +1684,9 @@
 			"confirmReschedule": "تأكيد",
 			"accessApproved": "تم الموافقة على الدخول",
 			"noActionsTerminal": "تم إغلاق أمر العمل. لا تتوفر إجراءات أخرى.",
+			"contactUs": "تواصل معنا",
+			"contactUsDesc": "للتواصل بخصوص هذا الطلب",
+			"underReviewMsg": "طلبك قيد المراجعة. سيقوم فريقنا بتعيين مزود خدمة وإعلامك قريباً.",
 			"approveAccessBtn": "الموافقة على الدخول",
 			"rateServiceBtn": "تقييم الخدمة",
 			"submitRating": "إرسال التقييم",

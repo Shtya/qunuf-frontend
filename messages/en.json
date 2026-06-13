@@ -1,4 +1,4 @@
-{
+﻿{
 	"hero": {
 		"trusted": "Trusted by Thousands",
 		"satisfaction": "100% Customer Satisfaction",
@@ -1651,6 +1651,7 @@
 			"slaHours": "SLA (hours)",
 			"statusOptions": {
 				"all": "All",
+				"pending_review": "Under Review",
 				"scheduled": "Scheduled",
 				"pending_provider_confirmation": "Scheduled",
 				"in_progress": "In Progress",
@@ -1683,6 +1684,9 @@
 			"confirmReschedule": "Confirm",
 			"accessApproved": "Access has been approved",
 			"noActionsTerminal": "This work order is finalized. No further actions available.",
+			"contactUs": "Contact Support",
+			"contactUsDesc": "Get in touch regarding this request",
+			"underReviewMsg": "Your request is under review. Our team will assign a service provider and update you shortly.",
 			"approveAccessBtn": "Approve Access",
 			"rateServiceBtn": "Rate Service",
 			"submitRating": "Submit Rating",

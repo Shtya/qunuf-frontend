@@ -23,6 +23,7 @@ export type RecurrenceType = 'once' | 'daily' | 'weekly' | 'monthly' | 'annually
 export type ScheduleStatus = 'active' | 'paused' | 'completed' | 'cancelled';
 
 export type WorkOrderStatus =
+    | 'pending_review'
     | 'scheduled'
     | 'in_progress'
     | 'completed'

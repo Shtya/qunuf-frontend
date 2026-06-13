@@ -6,8 +6,10 @@ import Popup from '@/components/atoms/Popup';
 import { useTranslations } from 'next-intl';
 import { format } from 'date-fns';
 import { useAuth } from '@/contexts/AuthContext';
+import { useValues } from '@/contexts/GlobalContext';
 import { UserRole } from '@/constants/user';
-import { MdWork, MdAccessTime, MdPerson, MdBusiness, MdCheckCircle, MdStar, MdCalendarMonth } from 'react-icons/md';
+import { Link } from '@/i18n/navigation';
+import { MdWork, MdAccessTime, MdPerson, MdBusiness, MdCheckCircle, MdStar, MdCalendarMonth, MdSupportAgent } from 'react-icons/md';
 import api from '@/libs/axios';
 
 interface Props {
@@ -17,6 +19,7 @@ interface Props {
 }
 
 const STATUS_COLORS: Record<WorkOrderStatus, { bg: string; text: string; ring: string; dot: string }> = {
+    pending_review: { bg: 'bg-yellow-50', text: 'text-yellow-700', ring: 'ring-yellow-200', dot: 'bg-yellow-500' },
     scheduled:   { bg: 'bg-blue-50',   text: 'text-blue-700',   ring: 'ring-blue-200',   dot: 'bg-blue-500' },
     in_progress: { bg: 'bg-violet-50', text: 'text-violet-700', ring: 'ring-violet-200', dot: 'bg-violet-500' },
     completed:   { bg: 'bg-emerald-50',text: 'text-emerald-700',ring: 'ring-emerald-200',dot: 'bg-emerald-500' },
@@ -26,6 +29,7 @@ const STATUS_COLORS: Record<WorkOrderStatus, { bg: string; text: string; ring: s
 };
 
 const STATUS_TRANSITIONS: Partial<Record<WorkOrderStatus, WorkOrderStatus[]>> = {
+    pending_review: ['scheduled', 'cancelled'],
     scheduled:   ['in_progress', 'cancelled'],
     in_progress: ['completed', 'cancelled'],
     overdue:     ['in_progress', 'cancelled'],
@@ -61,6 +65,8 @@ function Stars({ value, max = 5, interactive = false, onSelect }: {
 export default function WorkOrderDetailsPopup({ workOrder: initialWorkOrder, onClose, onRefresh }: Props) {
     const t = useTranslations('dashboard.maintenance');
     const { role } = useAuth();
+    const { settings } = useValues();
+    const adminUserId = settings?.adminUserId;
 
     // Local fresh copy fetched from API on open
     const [workOrder, setWorkOrder] = useState<WorkOrder | null>(null);
@@ -100,14 +106,19 @@ export default function WorkOrderDetailsPopup({ workOrder: initialWorkOrder, onC
 
     if (!initialWorkOrder) return null;
 
+    const isAdmin = role === UserRole.ADMIN;
     const isAdminOrLandlord = role === UserRole.ADMIN || role === UserRole.LANDLORD;
     const isTenant = role === UserRole.TENANT;
 
     const wo = workOrder ?? initialWorkOrder;
     const sc = STATUS_COLORS[wo.status] ?? STATUS_COLORS.scheduled;
-    const nextStatuses = STATUS_TRANSITIONS[wo.status] ?? [];
+    // pending_review transitions are admin-only
+    const nextStatuses = (wo.status === 'pending_review' ? isAdmin : isAdminOrLandlord)
+        ? (STATUS_TRANSITIONS[wo.status] ?? [])
+        : [];
     const canReschedule = isAdminOrLandlord && CAN_RESCHEDULE.includes(wo.status);
     const isTerminal = TERMINAL_STATUSES.includes(wo.status);
+    const isPendingReview = wo.status === 'pending_review';
 
     const callApi = async (fn: () => Promise<unknown>) => {
         setLoading(true);
@@ -229,6 +240,26 @@ export default function WorkOrderDetailsPopup({ workOrder: initialWorkOrder, onC
                 {isTenant && (
                     <div className="space-y-3 pt-1 border-t border-gray-100">
 
+                        {/* Under review message */}
+                        {isPendingReview && (
+                            <div className="flex items-start gap-2 p-3 bg-yellow-50 rounded-xl border border-yellow-200">
+                                <span className="text-lg shrink-0">⏳</span>
+                                <p className="text-sm text-yellow-800">{t('underReviewMsg')}</p>
+                            </div>
+                        )}
+
+                        {/* Contact us */}
+                        <Link
+                            href={adminUserId ? `/dashboard/chats?user=${adminUserId}` : '/dashboard/chats'}
+                            className="flex items-center gap-2 w-full px-4 py-3 rounded-xl bg-gray-50 text-gray-700 ring-1 ring-gray-200 text-sm font-semibold hover:bg-gray-100 transition-colors"
+                        >
+                            <MdSupportAgent className="text-lg shrink-0 text-secondary" />
+                            <div>
+                                <p>{t('contactUs')}</p>
+                                <p className="text-xs font-normal text-gray-500">{t('contactUsDesc')}</p>
+                            </div>
+                        </Link>
+
                         {/* Multi-choice: what happened with the provider? */}
                         {['scheduled', 'in_progress'].includes(wo.status) && (
                             <div className="space-y-2">
@@ -325,6 +356,28 @@ export default function WorkOrderDetailsPopup({ workOrder: initialWorkOrder, onC
                 {/* ── ADMIN / LANDLORD ACTIONS ── */}
                 {isAdminOrLandlord && (
                     <div className="space-y-3 pt-1 border-t border-gray-100">
+
+                        {/* Under review info for landlord */}
+                        {isPendingReview && !isAdmin && (
+                            <div className="flex items-start gap-2 p-3 bg-yellow-50 rounded-xl border border-yellow-200">
+                                <span className="text-lg shrink-0">⏳</span>
+                                <p className="text-sm text-yellow-800">{t('underReviewMsg')}</p>
+                            </div>
+                        )}
+
+                        {/* Contact us — landlord only */}
+                        {!isAdmin && (
+                            <Link
+                                href="/dashboard/chats"
+                                className="flex items-center gap-2 w-full px-4 py-3 rounded-xl bg-gray-50 text-gray-700 ring-1 ring-gray-200 text-sm font-semibold hover:bg-gray-100 transition-colors"
+                            >
+                                <MdSupportAgent className="text-lg shrink-0 text-secondary" />
+                                <div>
+                                    <p>{t('contactUs')}</p>
+                                    <p className="text-xs font-normal text-gray-500">{t('contactUsDesc')}</p>
+                                </div>
+                            </Link>
+                        )}
 
                         {isTerminal ? (
                             <p className="text-xs text-gray-400 text-center py-1">{t('noActionsTerminal')}</p>

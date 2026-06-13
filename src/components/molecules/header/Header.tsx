@@ -576,7 +576,7 @@ export default function Header() {
                   </Link>
 
                   <Link
-                    href="/dashboard/notifications"
+                    href="/dashboard/settings/notifications"
                     role="menuitem"
                     onClick={() => setUserMenuOpen(false)}
                     className="flex items-center gap-3 px-4 py-2.5 text-[13.5px] text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition-colors"

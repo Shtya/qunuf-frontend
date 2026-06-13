@@ -93,7 +93,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
       headers: { 'Content-Type': 'application/json' },
     });
     setUser(null);
-    window.location.href = '/en';
+    const locale = window.location.pathname.split('/')[1] || 'ar';
+    window.location.href = `/${locale}`;
     } catch {
       // silently ignore — user is logged out locally regardless
     } finally {

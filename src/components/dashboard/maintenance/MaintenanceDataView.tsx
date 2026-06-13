@@ -57,7 +57,7 @@ export default function MaintenanceDataView() {
 
     // ─── Work Order status filter options ──────────────────────────────────────
     const statusOptions: WorkOrderStatus[] = [
-        'scheduled', 'in_progress', 'completed', 'closed', 'overdue', 'cancelled',
+        'pending_review', 'scheduled', 'in_progress', 'completed', 'closed', 'overdue', 'cancelled',
     ];
     const workOrderFilters: FilterConfig[] = [
         {
@@ -139,7 +139,7 @@ export default function MaintenanceDataView() {
 
     const tabs: { key: Tab; label: string }[] = [
         { key: 'work-orders', label: t('tabWorkOrders') },
-        ...(isAdminOrLandlord ? [{ key: 'providers' as Tab, label: t('tabProviders') }] : []),
+        ...(isAdmin ? [{ key: 'providers' as Tab, label: t('tabProviders') }] : []),
     ];
 
     return (
@@ -171,17 +171,17 @@ export default function MaintenanceDataView() {
                     showActions
                     actionsMenuItems={workOrderActions}
                     onFetchRowsReady={fn => { workOrderFetchRef.current = fn; }}
-                    actionButton={isAdminOrLandlord ? {
+                    actionButton={{
                         show: true,
                         label: t('createWorkOrder'),
                         MobileIcon: MdAddCircleOutline,
                         onClick: () => setShowCreateWorkOrder(true),
-                    } : undefined}
+                    }}
                 />
             )}
 
             {/* Providers Tab */}
-            {activeTab === 'providers' && isAdminOrLandlord && (
+            {activeTab === 'providers' && isAdmin && (
                 <DataView<ServiceProvider>
                     columns={providerColumns}
                     showSearch

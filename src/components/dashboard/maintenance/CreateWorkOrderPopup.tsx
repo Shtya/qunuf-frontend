@@ -6,6 +6,8 @@ import { useTranslations } from 'next-intl';
 import { useWorkOrders } from '@/hooks/dashboard/maintenance/useWorkOrders';
 import { useServiceProviders } from '@/hooks/dashboard/maintenance/useServiceProviders';
 import { ServiceProvider, WorkOrder } from '@/types/dashboard/maintenance';
+import { useAuth } from '@/contexts/AuthContext';
+import { UserRole } from '@/constants/user';
 import api from '@/libs/axios';
 
 interface Property { id: string; name: string }
@@ -37,9 +39,12 @@ const EMPTY_FORM = {
 
 export default function CreateWorkOrderPopup({ show, onClose, onSuccess, workOrder }: Props) {
     const t = useTranslations('dashboard.maintenance');
+    const { role } = useAuth();
     const { createWorkOrder, updateWorkOrder } = useWorkOrders();
     const { listAll } = useServiceProviders();
     const isEdit = !!workOrder;
+    const isAdmin = role === UserRole.ADMIN;
+    const isTenant = role === UserRole.TENANT;
 
     const [properties, setProperties] = useState<Property[]>([]);
     const [providers, setProviders] = useState<ServiceProvider[]>([]);
@@ -49,12 +54,14 @@ export default function CreateWorkOrderPopup({ show, onClose, onSuccess, workOrd
 
     useEffect(() => {
         if (!show) return;
-        if (!isEdit) {
+        if (!isEdit && !isTenant) {
             api.get('/properties/all', { params: { limit: 200 } })
                 .then(r => setProperties(r.data?.records ?? []));
         }
-        listAll().then(setProviders);
-    }, [show]);
+        if (isAdmin) {
+            listAll().then(setProviders);
+        }
+    }, [show, isAdmin, isTenant]);
 
     useEffect(() => {
         if (workOrder) {
@@ -80,7 +87,7 @@ export default function CreateWorkOrderPopup({ show, onClose, onSuccess, workOrd
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!form.title || (!isEdit && !form.propertyId)) {
+        if (!form.title || (!isEdit && !isTenant && !form.propertyId)) {
             setError(t('validationRequired'));
             return;
         }
@@ -98,7 +105,7 @@ export default function CreateWorkOrderPopup({ show, onClose, onSuccess, workOrd
                 });
             } else {
                 await createWorkOrder({
-                    propertyId: form.propertyId,
+                    ...(form.propertyId ? { propertyId: form.propertyId } : {}),
                     title: form.title,
                     description: form.description || undefined,
                     priority: form.priority,
@@ -134,8 +141,8 @@ export default function CreateWorkOrderPopup({ show, onClose, onSuccess, workOrd
         <Popup show={show} onClose={onClose} headerContent={isEdit ? t('editWorkOrder') : t('createWorkOrder')}>
             <form onSubmit={handleSubmit} className="space-y-4 min-w-[340px] md:min-w-[500px]">
 
-                {/* Property selector — create mode only */}
-                {!isEdit && field(t('propertyLabel'), (
+                {/* Property selector — create mode only, not for tenant (auto-assigned) */}
+                {!isEdit && !isTenant && field(t('propertyLabel'), (
                     <select value={form.propertyId} onChange={e => setForm(p => ({ ...p, propertyId: e.target.value }))} className={selectCls} required>
                         <option value="">{t('selectProperty')}</option>
                         {properties.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}
@@ -177,7 +184,7 @@ export default function CreateWorkOrderPopup({ show, onClose, onSuccess, workOrd
                     ))}
                 </div>
 
-                <div className="grid grid-cols-2 gap-3">
+                <div className={`grid gap-3 ${isAdmin ? 'grid-cols-2' : 'grid-cols-1'}`}>
                     {field(t('dueDateLabel'), (
                         <input
                             type="date"
@@ -186,7 +193,7 @@ export default function CreateWorkOrderPopup({ show, onClose, onSuccess, workOrd
                             className={inputCls}
                         />
                     ))}
-                    {field(t('providerLabel'), (
+                    {isAdmin && field(t('providerLabel'), (
                         <select value={form.providerId} onChange={e => setForm(p => ({ ...p, providerId: e.target.value }))} className={selectCls}>
                             <option value="">{t('noProvider')}</option>
                             {providers.map(pv => <option key={pv.id} value={pv.id}>{pv.name}</option>)}
