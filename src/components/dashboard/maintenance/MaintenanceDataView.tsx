@@ -50,7 +50,7 @@ export default function MaintenanceDataView() {
     };
 
     const workOrderColumns = WorkOrderColumns(t, {
-        isAdminOrLandlord,
+        canChangeStatus: isAdmin,
         onStatusChange: handleStatusChange,
     });
     const providerColumns = ServiceProviderColumns(t);

@@ -50,7 +50,7 @@ export function EventDetailDrawer({ event, onClose, onEdit, onDelete, onRefresh 
     const [woLoading, setWoLoading] = useState(false);
     const [statusUpdating, setStatusUpdating] = useState(false);
 
-    const isAdminOrLandlord = role === UserRole.ADMIN || role === UserRole.LANDLORD;
+    const isAdmin = role === UserRole.ADMIN;
     const isTenant = role === UserRole.TENANT;
 
     useEffect(() => {
@@ -204,7 +204,7 @@ export function EventDetailDrawer({ event, onClose, onEdit, onDelete, onRefresh 
                     {/* Maintenance status actions */}
                     {event.type === 'maintenance' && wo && (
                         <div className="flex flex-wrap gap-1.5">
-                            {isAdminOrLandlord && (
+                            {isAdmin && (
                                 <>
                                     {woStatus === 'scheduled' && (
                                         <ActionBtn

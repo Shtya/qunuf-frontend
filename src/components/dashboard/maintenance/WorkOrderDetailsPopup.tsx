@@ -112,11 +112,8 @@ export default function WorkOrderDetailsPopup({ workOrder: initialWorkOrder, onC
 
     const wo = workOrder ?? initialWorkOrder;
     const sc = STATUS_COLORS[wo.status] ?? STATUS_COLORS.scheduled;
-    // pending_review transitions are admin-only
-    const nextStatuses = (wo.status === 'pending_review' ? isAdmin : isAdminOrLandlord)
-        ? (STATUS_TRANSITIONS[wo.status] ?? [])
-        : [];
-    const canReschedule = isAdminOrLandlord && CAN_RESCHEDULE.includes(wo.status);
+    const nextStatuses = isAdmin ? (STATUS_TRANSITIONS[wo.status] ?? []) : [];
+    const canReschedule = isAdmin && CAN_RESCHEDULE.includes(wo.status);
     const isTerminal = TERMINAL_STATUSES.includes(wo.status);
     const isPendingReview = wo.status === 'pending_review';
 

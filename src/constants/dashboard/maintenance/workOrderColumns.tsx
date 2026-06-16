@@ -30,7 +30,7 @@ const STATUS_TRANSITIONS: Partial<Record<WorkOrderStatus, WorkOrderStatus[]>> = 
 };
 
 export type WorkOrderColumnOptions = {
-    isAdminOrLandlord?: boolean;
+    canChangeStatus?: boolean;
     onStatusChange?: (id: string, status: WorkOrderStatus) => void;
 };
 
@@ -59,7 +59,7 @@ export const WorkOrderColumns = (
             const current = value as WorkOrderStatus;
             const s = STATUS_MAP[current] ?? STATUS_MAP.scheduled;
 
-            if (options?.isAdminOrLandlord && options?.onStatusChange) {
+            if (options?.canChangeStatus && options?.onStatusChange) {
                 const next = STATUS_TRANSITIONS[current] ?? [];
                 return (
                     <select
